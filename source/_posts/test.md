@@ -6,3 +6,7 @@ tags:
 this is a test file.
 
 deploy testing.
+
+```python
+print("hello world")
+```

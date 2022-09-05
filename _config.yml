@@ -7,13 +7,13 @@ title: 虫儿飞 | BUG-FLY
 subtitle: ''
 description: ''
 keywords:
-author: 虫儿飞
+author: 虫儿飞 | BUG-FLY
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://y2c.netlify.app/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
