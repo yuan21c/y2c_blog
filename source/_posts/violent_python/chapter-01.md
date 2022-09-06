@@ -63,7 +63,7 @@ root: DFNFxgW7C05fo: 504:100: Markus Hess:/root:/bin/bash
 >
 > `用户登录时加载的程序 Command/shell`: 用户登录时会加载的程序。通常为 shell 。
 
-我们要破解的就是第二部分，即 `HX9LLTdc/jiDE` 。其中前两位 `HX` 为盐(salt)，这个密码的明文是 `egg` 。我们用 [`crypt()`](https://docs.python.org/zh-cn/3.10/library/crypt.html#crypt.crypt) 函数就能得到加密后的值。
+我们要破解的就是第二部分，即 `HX9LLTdc/jiDE` 。其中前两位 `HX` 为盐(salt)，这个密码的明文是 `egg` 。我们用 [`crypt()`](https://docs.python.org/zh-cn/3/library/crypt.html#crypt.crypt) 函数就能得到加密后的值。
 
 ```python
 >>> import crypt
@@ -183,7 +183,7 @@ if __name__ == "__main__":
 
 ### `zipfile` 库
 
-编写 Zip 文件口令破解机需要使用 `zipfile` 库。 `zipfile` 库官方文档[见此](https://docs.python.org/zh-cn/3.10/library/zipfile.html)。我们需要重点关注 [`extractall()`](https://docs.python.org/zh-cn/3.10/library/zipfile.html#zipfile.ZipFile.extractall) 方法。
+编写 Zip 文件口令破解机需要使用 `zipfile` 库。 `zipfile` 库官方文档[见此](https://docs.python.org/zh-cn/3/library/zipfile.html)。我们需要重点关注 [`extractall()`](https://docs.python.org/zh-cn/3/library/zipfile.html#zipfile.ZipFile.extractall) 方法。
 
 使用下列方法即可使用 python zipfile 库解压 Zip 文件
 
