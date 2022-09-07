@@ -5,8 +5,8 @@ categories: violent python
 tags: 
     - python 
     - hacker
-top_img: https://s2.loli.net/2022/09/05/kgU19pAe6s4uEKf.jpg
-cover: https://s2.loli.net/2022/09/05/mXNBwx4MWHQP17a.jpg
+top_img: https://iili.io/6vlEXf.jpg
+cover: https://iili.io/6vlGs4.jpg
 ---
 
 ## 第一个 Python 程序: Unix 口令破解机
