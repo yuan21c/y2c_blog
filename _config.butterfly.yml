@@ -87,7 +87,8 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://iili.io/6v0FhG.jpg
+# index_img: https://iili.io/6v0FhG.jpg
+index_img: https://iili.io/6vSomb.jpg
 
 # If the banner of page not setting, it will show the top_img
 default_top_img: https://iili.io/6v0FhG.jpg
@@ -215,7 +216,7 @@ related_post:
   date_type: created # or created or updated 文章日期顯示創建日或者更新日
 
 # figcaption (圖片描述文字)
-photofigcaption: false
+photofigcaption: true
 
 # post_pagination (分頁)
 # value: 1 || 2 || false
@@ -777,7 +778,7 @@ fancybox: true
 # mermaid
 # see https://github.com/mermaid-js/mermaid
 mermaid:
-  enable: false
+  enable: true
   # built-in themes: default/forest/dark/neutral
   theme:
     light: default

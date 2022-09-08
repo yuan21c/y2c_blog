@@ -104,5 +104,30 @@ theme: butterfly
 deploy:
   type: ''
 
-marked:
-  modifyAnchors: 1 #modifyAnchors - Transform the anchorIds into lower case (1) or upper case (2).
+markdown:
+  preset: 'default'
+  render:
+    html: true
+    xhtmlOut: false
+    langPrefix: 'language-'
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  enable_rules:
+  disable_rules:
+  plugins:
+  anchors:
+    level: 2
+    collisionSuffix: ''
+    permalink: true
+    permalinkClass: 'header-anchor'
+    permalinkSide: 'right'
+    permalinkSymbol: '⚓'
+    # permalinkSymbol: '🔗🔱🌐⚓¶'
+    case: 1
+    separator: ""
+  images:
+    lazyload: false
+    prepend_root: false
+    post_asset: false
