@@ -673,7 +673,7 @@ aside:
     enable: false
     content: This is my Blog
   card_recent_post:
-    enable: true
+    enable: false
     limit: 5 # if set 0 will show all
     sort: date # date or updated
     sort_order: # Don't modify the setting unless you know how it works
@@ -832,13 +832,13 @@ instantpage: false
 # https://github.com/vinta/pangu.js
 # Insert a space between Chinese character and English character (中英文之間添加空格)
 pangu:
-  enable: false
+  enable: true
   field: site # site/post
 
 # Lazyload (圖片懶加載)
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: false
+  enable: true
   field: site # site/post
   placeholder:
   blur: false
@@ -846,13 +846,13 @@ lazyload:
 # PWA
 # See https://github.com/JLHwung/hexo-offline
 # ---------------
-# pwa:
-#   enable: false
-#   manifest: /pwa/manifest.json
-#   apple_touch_icon: /pwa/apple-touch-icon.png
-#   favicon_32_32: /pwa/32.png
-#   favicon_16_16: /pwa/16.png
-#   mask_icon: /pwa/safari-pinned-tab.svg
+pwa:
+  enable: false
+  manifest: /manifest.json
+  apple_touch_icon: /images/pwaicons/192.png
+  favicon_32_32: /images/pwaicons/32.png
+  favicon_16_16: /images/pwaicons/26.png
+  mask_icon: /images/pwaicons/512.png
 
 # Open graph meta tags
 # https://developers.facebook.com/docs/sharing/webmasters/

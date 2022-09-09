@@ -6,6 +6,7 @@ categories: violent python
 tags:
     - python 
     - hacker
+description: 
 top_img: https://iili.io/6vlEXf.jpg
 cover: https://iili.io/6vlGs4.jpg
 ---

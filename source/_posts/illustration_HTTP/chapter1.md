@@ -7,6 +7,7 @@ tags:
     - web
     - HTTP
     - WWW
+description: 
 top_img: https://iili.io/66LbYF.jpg
 cover: https://iili.io/66LxqB.jpg
 ---
@@ -181,7 +182,7 @@ DNS 协议提供通过域名查找 IP 地址，或逆向从 IP 地址反查域�
 
 + URL: Uniform Resource Locator, 统一资源定位符
 
-URI 用字符串标识某一互联网资源，而 URL 表示资源的地点（互联网上所处的位置）。 
+URI 用字符串标识某一互联网资源，而 URL 表示资源的地点（互联网上所处的位置）。
 
 URL 是 URI 的子集。
 
