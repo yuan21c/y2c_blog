@@ -168,7 +168,7 @@ HTTP 协议采用了多部分对象集合(Multipart)，允许发送的一份报�
 在 HTTP 报文中使用多部分对象集合时，需要在首部字段里加上 Content-type。
 
 使用 boundary 字符串来划分多部分对象集合指明的各类实体。在
-boundary   字符串指定的各个实体的起始行之前插入 `--` 标记（例如：`--AaB03x`、`--THIS_STRING_SEPARATES`），而在多部分对象集合对应的字符串的最后插入 `--` 标记（例如：`--AaB03x--`、`-THIS_STRING_SEPARATES--`）作为结束。
+boundary   字符串指定的各个实体的起始行之前插入 `--` 标记（例如：`--AaB03x`、`--THIS_STRING_SEPARATES`），而在多部分对象集合对应的字符串的最后插入 `--` 标记（例如：`--AaB03x--`、`--THIS_STRING_SEPARATES--`）作为结束。
 
 多部分对象集合的每个部分类型中，都可以含有首部字段。另外，可以在某个部分中嵌套使用多部分对象集合。有关多部分对象集合更详细的解释，请参考 [RFC 2046](https://www.rfc-editor.org/rfc/rfc2046)。
 
