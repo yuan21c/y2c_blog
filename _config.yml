@@ -123,7 +123,7 @@ markdown:
     permalink: true
     permalinkClass: 'header-anchor'
     permalinkSide: 'right'
-    permalinkSymbol: '🔗'
+    permalinkSymbol: '⚓'
     # permalinkSymbol: '🔗🔱🌐⚓¶'
     case: 1
     separator: ""

@@ -22,7 +22,7 @@ cover: https://iili.io/66LxqB.jpg
 
 下面是从客户端发送给某个 HTTP 服务器端的请求报文中的内容。
 
-``` plain
+``` http
 GET /index.htm HTTP/1.1 
 Host: hackr.jp
 ```
@@ -39,7 +39,7 @@ Host: hackr.jp
 
 接收到请求的服务器，会将请求内容的处理结果以响应的形式返回。
 
-```plain
+```http
 HTTP/1.1 200 OK
 Date: Tue, 10 Jul 2012 06:50:15 GMT
 Content-Length: 362 
@@ -73,7 +73,7 @@ HTTP/1.1 虽然是无状态协议，但为了实现期望的保持状态功能�
 
 除此之外，如果不是访问特定资源而是对服务器本身发起请求，可以用一个 * 来代替请求 URI。下面这个例子是查询 HTTP 服务器端支持的 HTTP 方法种类。
 
-```plain
+```http
 OPTIONS * HTTP/1.1
 ```
 
@@ -228,7 +228,7 @@ HTTP 请求报文和响应报文的内容如下:
 
 1. 请求报文（没有 Cookie 信息的状态）
 
-    ```plain
+    ```http
     GET /reader/ HTTP/1.1
     Host: hackr.jp
     *首部字段内没有Cookie的相关信息
@@ -236,7 +236,7 @@ HTTP 请求报文和响应报文的内容如下:
 
 2. 响应报文（服务器端生成 Cookie 信息）
 
-    ```plain
+    ```http
     HTTP/1.1 200 OK
     Date: Thu, 12 Jul 2012 07:12:20 GMT
     Server: Apache
@@ -246,7 +246,7 @@ HTTP 请求报文和响应报文的内容如下:
 
 3. 请求报文（自动发送保存着的 Cookie 信息）
 
-    ```plain
+    ```http
     GET /image/ HTTP/1.1
     Host: hackr.jp
     Cookie: sid=1342077140226724
