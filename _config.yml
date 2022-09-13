@@ -104,30 +104,57 @@ theme: butterfly
 deploy:
   type: ''
 
-markdown:
-  preset: 'default'
-  render:
-    html: true
-    xhtmlOut: false
-    langPrefix: 'language-'
-    breaks: true
-    linkify: true
-    typographer: true
-    quotes: '“”‘’'
-  enable_rules:
-  disable_rules:
-  plugins:
-  anchors:
-    level: 2
-    collisionSuffix: ''
-    permalink: true
-    permalinkClass: 'header-anchor'
-    permalinkSide: 'right'
-    permalinkSymbol: '⚓'
-    # permalinkSymbol: '🔗🔱🌐⚓¶'
-    case: 1
-    separator: ""
-  images:
-    lazyload: false
-    prepend_root: false
-    post_asset: false
+# markdown:
+#   preset: 'default'
+#   render:
+#     html: true
+#     xhtmlOut: false
+#     langPrefix: 'language-'
+#     breaks: true
+#     linkify: true
+#     typographer: false
+#     quotes: '“”‘’'
+#   enable_rules:
+#   disable_rules:
+#   plugins:
+#   anchors:
+#     level: 2
+#     collisionSuffix: ''
+#     permalink: true
+#     permalinkClass: 'header-anchor'
+#     permalinkSide: 'right'
+#     permalinkSymbol: '⚓'
+#     # permalinkSymbol: '🔗🔱🌐⚓¶'
+#     case: 1
+#     separator: "-"
+#   images:
+#     lazyload: false
+#     prepend_root: false
+#     post_asset: false
+
+
+# 缩进必须为 4 space
+# markdown_it_plus:
+#     highlight: true
+#     html: true
+#     xhtmlOut: true
+#     breaks: true
+#     langPrefix:
+#     linkify: true
+#     typographer:
+#     quotes: “”‘’
+#     pre_class: highlight
+#     plugins:
+#         - plugin:
+#             name: markdown-it-toc-and-anchor
+#             enable: true
+#             options:
+#               wrapHeadingTextInAnchor: true
+#               anchorLink: true
+#               anchorLinkSpace: true
+#               anchorLinkSymbol: "⚓"
+#               anchorLinkBefore: false
+#               # slugify: --
+
+marked:
+  modifyAnchors: 1  
