@@ -5,7 +5,8 @@
     "background_color": "#16222d",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "/illustration_HTTP/chapter2/",
+    "prefer_related_applications": true,
     "icons": [
         {
             "src": "images/pwaicons/36.png",
@@ -40,7 +41,8 @@
         {
             "src": "images/pwaicons/512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
     "splash_pages": null

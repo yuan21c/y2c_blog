@@ -608,7 +608,7 @@ beautify:
 # Don't modify the following settings unless you know how they work (非必要不要修改)
 font:
   global-font-size:
-  code-font-size:
+  code-font-size: 16px
   font-family:
   code-font-family:
 
@@ -775,7 +775,7 @@ fancybox: true
 # Tag Plugins settings (標籤外掛)
 # --------------------------------------
 
-# mermaid
+# 
 # see https://github.com/mermaid-js/mermaid
 mermaid:
   enable: true
@@ -827,7 +827,7 @@ snackbar:
 
 # https://instant.page/
 # prefetch (預加載)
-instantpage: false
+instantpage: true
 
 # https://github.com/vinta/pangu.js
 # Insert a space between Chinese character and English character (中英文之間添加空格)
@@ -847,7 +847,7 @@ lazyload:
 # See https://github.com/JLHwung/hexo-offline
 # ---------------
 pwa:
-  enable: false
+  enable: true
   manifest: /manifest.json
   apple_touch_icon: /images/pwaicons/192.png
   favicon_32_32: /images/pwaicons/32.png
