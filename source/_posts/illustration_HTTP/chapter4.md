@@ -1,7 +1,7 @@
 ---
 title: 《图解HTTP》第四章 返回结果的 HTTP 状态码
 date: 2022-09-10 19:52:38
-updated: 2022-09-10 19:52:38
+updated: 2022-09-15 23:43:04
 categories: 图解HTTP
 tags: 
     - web
@@ -105,6 +105,10 @@ cover: https://iili.io/66LxqB.jpg
 
 该状态码表明服务器上无法找到请求的资源。除此之外，也可以在服务器端拒绝请求且不想说明理由时使用。
 
+### 405 Method Not Allowed
+
+状态码 `405 Method Not Allowed` 表明服务器禁止了使用当前 HTTP 方法的请求。
+
 ## 5XX 服务器错误
 
 ### 500 Internal Server Error
@@ -118,3 +122,9 @@ cover: https://iili.io/66LxqB.jpg
 > 状态码和状况的不一致
 >
 > 不少返回的状态码响应都是错误的，但是用户可能察觉不到这点。比如 Web 应用程序内部发生错误，状态码依然返回 `200 OK`，这种情况也经常遇到。
+
+### 504 Gateway Timeout
+
+`504 Gateway Timeout` 是一种 HTTP 协议的服务器端错误状态代码，表示扮演网关或者代理的服务器无法在规定的时间内获得想要的响应。
+
+Gateway（网关）在计算机网络体系中可以指代不同的设备，504 错误通常不是在客户端可以修复的，而是需要由途径的 Web 服务器或者代理服务器对其进行修复。
