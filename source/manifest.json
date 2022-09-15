@@ -5,9 +5,14 @@
     "background_color": "#16222d",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/illustration_HTTP/chapter2/",
+    "start_url": "/",
     "prefer_related_applications": true,
     "icons": [
+        {
+            "src": "images/pwaicons/512.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        },
         {
             "src": "images/pwaicons/36.png",
             "sizes": "36x36",
@@ -41,9 +46,7 @@
         {
             "src": "images/pwaicons/512.png",
             "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "any maskable"
+            "type": "image/png"
         }
-    ],
-    "splash_pages": null
+    ]
 }

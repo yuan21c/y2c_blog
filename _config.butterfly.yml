@@ -849,10 +849,10 @@ lazyload:
 pwa:
   enable: true
   manifest: /manifest.json
-  apple_touch_icon: /images/pwaicons/192.png
+  apple_touch_icon: /images/pwaicons/180.png
   favicon_32_32: /images/pwaicons/32.png
   favicon_16_16: /images/pwaicons/26.png
-  mask_icon: /images/pwaicons/512.png
+  mask_icon: /images/pwaicons/512.svg
 
 # Open graph meta tags
 # https://developers.facebook.com/docs/sharing/webmasters/
