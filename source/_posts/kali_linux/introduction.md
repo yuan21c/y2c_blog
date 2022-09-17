@@ -8,8 +8,8 @@ tags:
     - kali-linux
     - docs
 description:
-top_img: https://iili.io/PezYlI.png
-cover: https://iili.io/PezYlI.png
+top_img: https://iili.io/iJ2mSp.jpg # https://iili.io/PezYlI.png
+cover: https://iili.io/iJ2yHN.png # https://iili.io/PezYlI.png
 ---
 
 > 此翻译为个人学习目的，水平有限，难免有谬误之处。请以官方英文文档为准。
