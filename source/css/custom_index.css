@@ -6,12 +6,34 @@
     background-color: rgba(0,0,0,0) !important;
 }
 
+/* 中心部分 */
+.layout {
+    max-width: 100%;
+    align-content: center;
+    padding-left: 3%;
+}
+
+/* 侧边栏 */
+#aside-content{
+    max-width: 24em !important;
+    min-width: 19em !important;
+    width: 36% !important;
+}
+
 @media screen and (min-width: 1280px) {
+
     /* 中心部分 */
     .layout {
         max-width: 100%;
         align-content: center;
-        padding-left: 8em;
+        padding-left: 6%;
+    }
+
+    /* 侧边栏 */
+    #aside-content{
+        max-width: 24em !important;
+        min-width: 24em !important;
+        width: 24em !important;
     }
 
     /* 整个文章区域的 div */
@@ -40,13 +62,6 @@
     /* 非第一个文章 */
     #recent-posts > .recent-post-item:not(:first-child){
         margin-top: 0;
-    }
-
-    /* 侧边栏 */
-    #aside-content{
-        max-width: 28em;
-        min-width: 20em;;
-        width: 36%;
     }
 
     /* 最后一元素是页码，使其独占一行 */
@@ -85,8 +100,8 @@
     }
 }
 
-@media screen and (min-width: 2600px) {
+/* @media screen and (min-width: 2600px) {
     #recent-posts > .recent-post-item{
         flex: 0 0 18.5%;
     }
-}
+} */
