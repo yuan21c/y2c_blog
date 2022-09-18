@@ -1,0 +1,92 @@
+#footer{
+    background: linear-gradient(#2e4f6400, 20%, #2e4f6490) !important;
+}
+
+#footer:before{
+    background-color: rgba(0,0,0,0) !important;
+}
+
+@media screen and (min-width: 1280px) {
+    /* 中心部分 */
+    .layout {
+        max-width: 100%;
+        align-content: center;
+        padding-left: 8em;
+    }
+
+    /* 整个文章区域的 div */
+    #recent-posts{
+        display: flex;
+        flex-wrap: wrap;
+        margin:0 auto;
+        width: auto;
+    }
+
+    /* 单个文章的 div */
+    #recent-posts > .recent-post-item{
+        display: flex;
+        flex-direction: column-reverse;
+        /* height: 38em; */
+        height: auto;
+        min-height: 36em;
+        width: auto;
+        flex-wrap: wrap;
+        flex: 0 0 45%;
+        margin-right: 20px;
+        margin-bottom: 20px; 
+        position: relative;
+    }
+
+    /* 非第一个文章 */
+    #recent-posts > .recent-post-item:not(:first-child){
+        margin-top: 0;
+    }
+
+    /* 侧边栏 */
+    #aside-content{
+        max-width: 28em;
+        min-width: 20em;;
+        width: 36%;
+    }
+
+    /* 最后一元素是页码，使其独占一行 */
+    #pagination{
+        width: 100%;
+    }
+
+    /* 文章的图片 */
+    #recent-posts > .recent-post-item .post_cover.right{
+        width: 100%;
+        flex: 2 1 0;
+        flex-wrap: wrap;
+    }
+
+    /* 文章的文字说明 */
+    #recent-posts > .recent-post-item >.recent-post-info{
+        width: 100%;
+        height: 30%;
+        flex-wrap: wrap;
+        padding: 20px 20px 30px
+    }
+
+}
+
+/* 每行三个 */
+@media screen and (min-width: 1500px) {
+    #recent-posts > .recent-post-item{
+        flex: 0 0 31%;
+    }
+}
+
+/* 每行四个 */
+@media screen and (min-width: 1860px) {
+    #recent-posts > .recent-post-item{
+        flex: 0 0 22.5%;
+    }
+}
+
+@media screen and (min-width: 2600px) {
+    #recent-posts > .recent-post-item{
+        flex: 0 0 18.5%;
+    }
+}

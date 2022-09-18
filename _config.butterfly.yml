@@ -165,7 +165,7 @@ wordcount:
 # 3: auto_excerpt (default)
 # false: do not show the article introduction
 index_post_content:
-  method: 2
+  method: 1
   length: 500 # if you set method to 2 or 3, the length need to config
 
 # anchor
@@ -527,7 +527,7 @@ background: url(https://iili.io/6vlvXj.jpg)
 
 
 # Footer Background
-footer_bg: "#467499"
+footer_bg: "#46749920"
 # footer_bg: 80%
 
 # the position of bottom right button/default unit: px (右下角按鈕距離底部的距離/默認單位為px)
@@ -867,7 +867,7 @@ css_prefix: true
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="stylesheet" href="/css/custom_index.css">
   bottom:
     # - <script src="xxxx"></script>
 
