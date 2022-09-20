@@ -1,7 +1,7 @@
 ---
 title: 《图解HTTP》第六章 HTTP 首部
 date: 2022-09-12 14:21:39
-updated: 2022-09-15 23:43:10
+updated: 2022-09-21 00:03:58
 categories: 图解HTTP
 tags: 
     - web
@@ -664,7 +664,7 @@ Host:
 
 ### If-Match
 
-形如 `If-xxx` 这种样式的请求首部字段，都可称为***条件请求***。服务器接收到附带条件的请求后，只有判断指定条件为真时，才会执行请求。
+形如 `If-xxx` 这种样式的请求首部字段，都可称为 ***条件请求*** 。服务器接收到附带条件的请求后，只有判断指定条件为真时，才会执行请求。
 
 ![只有当 `If-Match` 的字段值跟 `ETag` 值匹配一致时，服务器才会接受请求](https://iili.io/PZHO0J.jpg)
 
@@ -1051,39 +1051,39 @@ Set-Cookie 的字段值:
 
 #### expires 属性
 
-`Cookie` 的 `expires` 属性指定浏览器可发送 `Cookie` 的有效期。
+Cookie 的 `expires` 属性指定浏览器可发送 Cookie 的有效期。
 
 当省略 `expires` 属性时，其有效期仅限于维持浏览器`会话（Session）`时间段内。这通常限于浏览器应用程序被关闭之前。
 
-另外，一旦 `Cookie` 从服务器端发送至客户端，服务器端就不存在可以显式删除 `Cookie` 的方法。但可通过覆盖已过期的 `Cookie` ，实现对客户端 `Cookie` 的实质性删除操作。
+另外，一旦 Cookie 从服务器端发送至客户端，服务器端就不存在可以显式删除 Cookie 的方法。但可通过覆盖已过期的 Cookie ，实现对客户端 Cookie 的实质性删除操作。
 
 #### path 属性
 
-`Cookie` 的 `path` 属性可用于限制指定 `Cookie` 的发送范围的文件目录。不过另有办法可避开这项限制，对其作为安全机制的效果不能抱有期待。
+Cookie 的 `path` 属性可用于限制指定 Cookie 的发送范围的文件目录。不过另有办法可避开这项限制，对其作为安全机制的效果不能抱有期待。
 
 #### domain 属性
 
-通过 `Cookie` 的 `domain` 属性指定的域名可做到与结尾匹配一致。比如，当指定 `example.com` 后，除 `example.com` 以外，`www.example.com` 或 `www2.example.com` 等都可以发送 `Cookie` 。
+通过 Cookie 的 `domain` 属性指定的域名可做到与结尾匹配一致。比如，当指定 example.com 后，除 example.com 以外，www.example.com 或 www2.example.com 等都可以发送 Cookie 。
 
-因此，除了针对具体指定的多个域名发送 `Cookie` 之 外，不指定 `domain` 属性显得更安全。
+因此，除了针对具体指定的多个域名发送 Cookie 之 外，不指定 `domain` 属性显得更安全。
 
 #### secure 属性
 
-`Cookie` 的 `secure` 属性用于限制 Web 页面仅在 HTTPS 安全连接时，才可以发送 `Cookie` 。
+Cookie 的 `secure` 属性用于限制 Web 页面仅在 HTTPS 安全连接时，才可以发送 Cookie 。
 
-发送 `Cookie` 时，指定 `secure` 属性的方法如下所示。
+发送 Cookie 时，指定 `secure` 属性的方法如下所示。
 
 ```http
 Set-Cookie: name=value; secure
 ```
 
-以上例子仅当在 `https://www.example.com/` （HTTPS）安全连接的情况下才会进行 `Cookie` 的回收。也就是说，即使域名相同， `http://www.example.com/` （HTTP）也不会发生 `Cookie` 回收行为。
+以上例子仅当在 `https://www.example.com/` （HTTPS）安全连接的情况下才会进行 Cookie 的回收。也就是说，即使域名相同， `http://www.example.com/` （HTTP）也不会发生 Cookie 回收行为。
 
-当省略 `secure` 属性时，不论 HTTP 还是 HTTPS，都会对 `Cookie` 进行回收。
+当省略 `secure` 属性时，不论 HTTP 还是 HTTPS，都会对 Cookie 进行回收。
 
 #### HttpOnly 属性
 
-`Cookie` 的 `HttpOnly` 属性是 `Cookie` 的扩展功能，它使 JavaScript 脚本无法获得 `Cookie` 。其主要目的为防止`跨站脚本攻击（Cross-site scripting，XSS）`对 `Cookie` 的信息窃取。
+Cookie 的 `HttpOnly` 属性是 Cookie 的扩展功能，它使 JavaScript 脚本无法获得 Cookie 。其主要目的为防止**跨站脚本攻击（Cross-site scripting，XSS）**对 Cookie 的信息窃取。
 
 发送指定 HttpOnly 属性的 Cookie 的方法如下所示:
 
@@ -1091,7 +1091,7 @@ Set-Cookie: name=value; secure
 Set-Cookie: name=value; HttpOnly
 ```
 
-通过上述设置，通常从 Web 页面内还可以对 `Cookie` 进行读取操作。但使用 JavaScript 的 `document.cookie` 就无法读取附加 `HttpOnly` 属性后的 `Cookie` 的内容了。因此，也就无法在 XSS 中利用 JavaScript 劫持 `Cookie` 了。
+通过上述设置，通常从 Web 页面内还可以对 Cookie 进行读取操作。但使用 JavaScript 的 `document.cookie` 就无法读取附加 `HttpOnly` 属性后的 Cookie 的内容了。因此，也就无法在 XSS 中利用 JavaScript 劫持 Cookie 了。
 
 ### Cookie
 
@@ -1099,7 +1099,7 @@ Set-Cookie: name=value; HttpOnly
 Cookie: status=enable
 ```
 
-首部字段 `Cookie` 会告知服务器，当客户端想获得 HTTP 状态管理支持时，就会在请求中包含从服务器接收到的 `Cookie` 。接收到多个 `Cookie` 时，同样可以以多个 `Cookie` 形式发送。
+首部字段 `Cookie` 会告知服务器，当客户端想获得 HTTP 状态管理支持时，就会在请求中包含从服务器接收到的 Cookie 。接收到多个 Cookie 时，同样可以以多个 Cookie 形式发送。
 
 ## 其他首部字段
 

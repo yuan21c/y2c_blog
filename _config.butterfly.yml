@@ -868,6 +868,7 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom_index.css">
+    - <link rel="stylesheet" href="/css/post_index.css">
   bottom:
     # - <script src="xxxx"></script>
 
