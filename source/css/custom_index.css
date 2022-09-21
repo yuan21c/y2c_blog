@@ -53,7 +53,8 @@
         display: flex;
         flex-wrap: wrap;
         margin:0 auto;
-        width: auto;
+        /* width: auto; */
+        width: 100%;
     }
 
     /* 单个文章的 div */
@@ -63,6 +64,7 @@
         /* height: 38em; */
         height: auto;
         min-height: 36em;
+        max-height: 42em;
         width: auto;
         flex-wrap: wrap;
         flex: 0 0 45%;

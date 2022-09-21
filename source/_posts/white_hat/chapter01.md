@@ -6,7 +6,7 @@ categories: 白帽子讲 Web 安全
 tags:
     - hacker
     - white hat
-    - safety
+    - security
     - web
 description:
 top_img: https://iili.io/iJ2HCb.jpg
