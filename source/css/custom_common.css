@@ -1,0 +1,4 @@
+/* 分割符 */
+hr::before{
+    display: none;
+}

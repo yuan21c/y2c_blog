@@ -1,0 +1,27 @@
+/* 行内代码圆角 */
+code {
+    border-radius: 3px;
+}
+
+/* 目录激活状态圆角 */
+#aside-content #card-toc .toc-content .toc-link.active {
+    border-radius: 5px;
+}
+
+blockquote {
+    border-radius: 8px;
+    border-left: 8px solid #49b1f5;
+}
+
+.note:not(.no-icon)::before {
+    /* top: calc(50% - 0.95em); */
+    top: 0.8em;
+}
+
+.note.flat {
+    border-left: 8px solid #eee
+}
+
+.note {
+    border-radius: 8px;
+}

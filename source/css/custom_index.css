@@ -36,24 +36,25 @@
 
     /* 中心部分 */
     .layout {
-        max-width: 100%;
+        /* max-width: 100%; */
+        min-width: 1200px;
+        max-width: 1400px;
+        width: auto;
         align-content: center;
-        padding-left: 6%;
+        padding-left: 40px;
     }
 
     /* 侧边栏 */
     #aside-content{
-        max-width: 24em !important;
-        min-width: 24em !important;
         width: 24em !important;
+        padding-right: 15px;
     }
 
     /* 整个文章区域的 div */
     #recent-posts{
         display: flex;
         flex-wrap: wrap;
-        margin:0 auto;
-        /* width: auto; */
+        /* align-content: center; */
         width: 100%;
     }
 
@@ -61,16 +62,17 @@
     #recent-posts > .recent-post-item{
         display: flex;
         flex-direction: column-reverse;
-        /* height: 38em; */
+        align-content: left;
         height: auto;
         min-height: 36em;
         max-height: 42em;
         width: auto;
+        min-width: 24em;
         flex-wrap: wrap;
-        flex: 0 0 45%;
-        margin-right: 20px;
+        flex: 0 0 48%;
+        margin-right: auto;
         margin-bottom: 20px; 
-        position: relative;
+        /* position: relative; */
     }
 
     /* 非第一个文章 */
@@ -97,25 +99,31 @@
         flex-wrap: wrap;
         padding: 20px 20px 30px
     }
-
 }
 
-/* 每行三个 */
 @media screen and (min-width: 1500px) {
+    /* 中心部分 */
+    .layout {
+        min-width: 1400px;
+        max-width: 1800px;
+        align-content: center;
+    }
+
+    /* 每行三个 */
     #recent-posts > .recent-post-item{
-        flex: 0 0 31%;
+        flex: 0 0 32%;
     }
 }
 
-/* 每行四个 */
 @media screen and (min-width: 1860px) {
+    /* 中心部分 */
+    .layout {
+        min-width: 1800px;
+        max-width: 2000px;
+        align-content: center;
+    }
+    /* 每行四个 */
     #recent-posts > .recent-post-item{
-        flex: 0 0 22.5%;
+        flex: 0 0 24%;
     }
 }
-
-/* @media screen and (min-width: 2600px) {
-    #recent-posts > .recent-post-item{
-        flex: 0 0 18.5%;
-    }
-} */

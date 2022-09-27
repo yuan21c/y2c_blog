@@ -178,9 +178,9 @@ anchor: true
 # toc (目錄)
 toc:
   post: true
-  page: true
+  page: false
   number: true
-  expand: true
+  expand: false
   style_simple: false # for post
 
 post_copyright:
@@ -211,7 +211,7 @@ post_edit:
 
 # Related Articles
 related_post:
-  enable: true
+  enable: false
   limit: 6 # Number of posts displayed
   date_type: created # or created or updated 文章日期顯示創建日或者更新日
 
@@ -223,7 +223,7 @@ photofigcaption: true
 # 1: The 'next post' will link to old post
 # 2: The 'next post' will link to new post
 # false: disable pagination
-post_pagination: 2
+post_pagination: false
 
 # Displays outdated notice for a post (文章過期提醒)
 noticeOutdate:
@@ -522,7 +522,8 @@ tag_ui: # 留空或 index
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
 # background: url(https://s2.loli.net/2022/09/05/hcdJT73Gyjag156.jpg)
 # background: url(https://iili.io/6vldWx.png)
-background: url(https://iili.io/6vlvXj.jpg)
+# background: url(https://iili.io/6vlvXj.jpg)
+background: url(https://iili.io/sRmaNs.jpg)
 # background: themes/butterfly/source/img/backgroud2.png
 
 
@@ -868,7 +869,8 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom_index.css">
-    - <link rel="stylesheet" href="/css/post_index.css">
+    - <link rel="stylesheet" href="/css/custom_post.css">
+    - <link rel="stylesheet" href="/css/custom_common.css">
   bottom:
     # - <script src="xxxx"></script>
 
