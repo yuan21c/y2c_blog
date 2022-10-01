@@ -1,4 +1,23 @@
+/* 底部 */
+#footer {
+    background: linear-gradient(#2e4f6400, 20%, #2e4f6490) !important;
+}
+
+#footer:before {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* 侧边栏距顶部距离 */
+#aside-content .sticky_layout {
+    top: 10px;
+}
+
 /* 分割符 */
 hr::before{
     display: none;
+}
+
+/* 夜间模式压黑背景 */
+[data-theme='dark'] #web_bg:before{
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }

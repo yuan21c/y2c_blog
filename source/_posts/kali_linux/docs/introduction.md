@@ -1,7 +1,7 @@
 ---
 title: Kali Linux 官方文档 Introduction
 date: 2022-09-13 14:51:33
-updated: 2022-09-24 01:49:19
+updated: 2022-09-28 09:36:05
 categories: kali-linux
 tags: 
     - kali
@@ -91,7 +91,7 @@ Kali Linux is specifically tailored to the needs of penetration testing professi
 
 Kali Linux专门针对渗透测试专业人员的需求量身定制，因此本网站的所有文档假设你掌握了前置知识和类 Linux 操作系统的使用。是什么让 Kali 如此与众不同，请看[我该使用 Kali Linux 吗？](#should-i-use-kali-linux-我该使用-kali-linux-吗)
 
-Updated on: 2022-Sep-09
+Updated on: *2022-Sep-09*
 Author: [*g0tmi1k*](https://gitlab.com/g0tmi1k)
 
 ---
@@ -180,7 +180,7 @@ If not, then see you later, and remember always “Try Harder”.
 
 如果你决定不安装 Kali Linux ，那就再见，永远记住 “再加把劲”。
 
-Updated on: 2022-Jul-25
+Updated on: *2022-Jul-25*
 Author: [*g0tmi1k*](https://gitlab.com/g0tmi1k)
 
 ---
@@ -303,7 +303,7 @@ If you’re not sure of the architecture of the system you want to run Kali on, 
 
 如果你不确定你的系统所采用的架构，可以执行下面的这个命令：
 
-```bash
+```shell
 uname -m
 ```
 
@@ -370,32 +370,465 @@ There are several methods for verifying your download. Each provides a certain l
 
 有几种方法来验证你的下载。每种方法都提供了一定程度的保证，并涉及你的相应程度的付出。我们在下面列举了3中方法：
 
-1. You can download an ISO image from an official Kali Linux “Downloads” mirror, calculate the ISO’s SHA256 hash and compare it by inspection with the value listed on the Kali Linux site. This is quick and easy, but potentially susceptible to subversion via a DNS poisoning: it assumes that the site to which, for example, the domain “kali.org” resolves is in fact the actual Kali Linux site. If it somehow were not, an attacker could present a “loaded” image and a matching SHA256 signature on the fake web page. See the section [“Manually Verify the Signature on the ISO (Direct Download)”](), below.
+1. You can download an ISO image from an official Kali Linux “Downloads” mirror, calculate the ISO’s SHA256 hash and compare it by inspection with the value listed on the Kali Linux site. This is quick and easy, but potentially susceptible to subversion via a DNS poisoning: it assumes that the site to which, for example, the domain “kali.org” resolves is in fact the actual Kali Linux site. If it somehow were not, an attacker could present a “loaded” image and a matching SHA256 signature on the fake web page. See the section “Manually Verify the Signature on the ISO (Direct Download)”, below.
 
-    你可以通过 Kali Linux 官方下载镜像下载 ISO 镜像，计算 ISO 的 SHA256 哈希值然后和 Kali Linux 网站上列出的值进行对比。这很快而且很容易，但是这也可能因为DNS缓存中毒而遭到破坏：DNS 会呈现你访问的站点，比如："kali.org", 那个真的 Kali Linux 站点。如果你访问的不是真的站点，攻击者就能在假的网站上发布一个加载了恶意软件的镜像并发布与之匹配的 SHA256 签名。访问下面的 [手动校验 ISO 签名(直接下载)]() 。
+    你可以通过 Kali Linux 官方下载镜像源下载 ISO 镜像，计算 ISO 的 SHA256 哈希值然后和 Kali Linux 网站上列出的值进行对比。这很快而且很容易，但是这也可能因为DNS缓存中毒而遭到破坏：DNS 会呈现你访问的站点，比如："kali.org", 那个真的 Kali Linux 站点。如果你访问的不是真的站点，攻击者就能在假的网站上发布一个加载了恶意软件的镜像并发布与之匹配的 SHA256 签名。访问下面的 [手动校验 ISO 签名(直接下载)](/kali_linux/docs/introduction/#manually-verify-the-signature-on-the-iso-direct-download-手动校验-iso-签名（直接下载）) 。
 
 2. You can download an ISO image through the torrents, and it will also pull down a file - unsigned - containing the calculated SHA256 signature. You can then use the shasum command (on Linux and macOS) or a utility (on Windows) to automatically verify that the file’s computed signature matches the signature in the secondary file. This is even easier than the “manual” method, but suffers from the same weakness: if the torrent you pulled down is not really Kali Linux, it could still have a good signature. See the section “Verify the Signature on the ISO Using the Included Signature File (Torrent Download)”, below.
 
-    你可以通过 torrents 下载 ISO 镜像，同时会下载一个未签名的包含计算出的 SHA256 值的签名文件。你可以通过 `shasum` 命令(在 Linux 和 macOS 中)或者程序(在 windows 上) 自动校验 ISO 文件的计算出的签名和第二个文件中的签名是否一致。这比手动的方法更容易，但是它有同样的弱点：如果你下载的 torrents 并非 Kali Linux，它依然被很好的签名了。请看下面的 [使用包含的签名文件校验 ISO 签名(Torrent 下载)]()
+    你可以通过 torrents 下载 ISO 镜像，同时会下载一个未签名的包含计算出的 SHA256 值的签名文件。你可以通过 `shasum` 命令(在 Linux 和 macOS 中)或者程序(在 windows 上) 自动校验 ISO 文件的计算出的签名和第二个文件中的签名是否一致。这比手动的方法更容易，但是它有同样的弱点：如果你下载的 torrents 并非 Kali Linux，它依然被很好的签名了。请看下面的 [使用签名文件校验 ISO 签名(Torrent 下载)](/kali_linux/docs/introduction/#verify-the-signature-on-the-iso-using-the-included-signature-file-torrent-download-使用签名文件校验-iso-签名-torrent-下载)
 
-+ To be as close to absolutely certain as possible that the Kali Linux download you’ve obtained is the real thing, you can download both a cleartext signature file and and version of the same file that has been signed with the official Kali Linux private key and use GNU Privacy Guard (GPG) to first, verify that the computed SHA256 signature and the signature in the cleartext file match and second, verify that the signed version of the file containing the SHA256 hash has been correctly signed with the official key.
+3. To be as close to absolutely certain as possible that the Kali Linux download you’ve obtained is the real thing, you can download both a cleartext signature file and and version of the same file that has been signed with the official Kali Linux private key and use GNU Privacy Guard (GPG) to first, verify that the computed SHA256 signature and the signature in the cleartext file match and second, verify that the signed version of the file containing the SHA256 hash has been correctly signed with the official key.
 
     为了尽可能保证你你下载 Kali Linux 是真的 Kali Linux ，你可以下载明文的签名文件和使用 Kali Linux 官方私钥签名的且使用了 GPG 签名的相同文件。首先，校验计算出的 SHA256 签名和明文签名文件一致，然后，校验签名的文件包含的 SHA256 哈希值被相同的官方密钥签名。
 
-If you use this more complicated process and successfully validate your downloaded ISO, you can proceed with pretty complete assurance that what you’ve got is the official image and that it has not been tampered with in any way. This method, while the most complex, has the advantage of providing independent assurance of the integrity of the image. The only way this method can fail is if the official Kali Linux private key is not only subverted by an attacker, but also not subsequently revoked by the Kali Linux development team. For this method, see the section on [verification using the SHA256SUMS file]().
+If you use this more complicated process and successfully validate your downloaded ISO, you can proceed with pretty complete assurance that what you’ve got is the official image and that it has not been tampered with in any way. This method, while the most complex, has the advantage of providing independent assurance of the integrity of the image. The only way this method can fail is if the official Kali Linux private key is not only subverted by an attacker, but also not subsequently revoked by the Kali Linux development team. For this method, see the section on verification using the SHA256SUMS file.
 
-如果你使用了这个更加复杂的方式验证了你下载的 ISO，你可以完全保证你获得了没有被篡改的官方镜像。这种复杂的方法，在提供独立的完整性检查上更具优势。这种方法失效的唯一可能就是 Kali Linux 官方的私钥不仅被攻击者破坏，而且之后没有被 Kali Linux 开发团队废除。请看 [使用 SHA256SUMS 文件校验]()
+如果你使用了这个更加复杂的方式验证了你下载的 ISO，你可以完全保证你获得了没有被篡改的官方镜像。这种复杂的方法，在提供独立的完整性检查上更具优势。这种方法失效的唯一可能就是 Kali Linux 官方的私钥不仅被攻击者破坏，而且之后没有被 Kali Linux 开发团队废除。请看 [使用 SHA256SUMS 文件校验](/kali_linux/docs/introduction/#verify-the-iso-using-the-sha256sums-file-使用-sha256sums-文件校验-iso)
 
-<!-- ## Download Kali Linux Images Securely
+#### What do I need to do this? | 我需要做什么？
 
-## Kali's Default Credentials
+If you’re running on Linux, you probably already have [GPG](https://www.gnupg.org/) (GNU Privacy Guard) installed. If you’re on Windows or macOS, you’ll need to install the appropriate version for your platform.
+
+如果你运行的是 Linux , 你也许已经安装了 [GPG](https://www.gnupg.org/) 。如果你安装的 Windows 或者 macOS ，你需要安装合适的版本。
+
++ If you’re on a PC running Windows, download and install GPG4Win from [here](https://gpg4win.org/download.html).
+    如果你使用的是 Windows ，你可以从[此处](https://gpg4win.org/download.html)下载安装 GPG4Win 。
+
++ If you’re on a Macintosh running macOS, download and install GPGTools from [here](https://gpgtools.org/). Alternatively, if you have Homebrew installed, just run `brew install gnupg`
+    如果你使用的 macOS ，你可以从[此处](https://gpgtools.org/)下载安装 GPGTools 。或者，如果你安装了 Homebrew ，直接运行 `brew install gnupg`
+
+Once you’ve installed GPG, you’ll need to download and import a copy of the Kali Linux official key. Do this with the following command:
+
+一旦你安装 GPG ，你需要下载并导入 Kali Linux 官方密钥的拷贝。请执行下面的命令：
+
+```shell
+wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
+```
+
+or the command
+
+或者
+
+```shell
+gpg --keyserver hkps://keys.openpgp.org --recv-key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+```
+
+Your output should look like this:
+
+你的输出应该类似这样：
+
+```plain
+gpg: key ED444FF07D8D0BF6: public key "Kali Linux Repository <devel@kali.org>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+```
+
+Verify that the key is properly installed with the command:
+
+用这个命令检验密钥是否正确安装
+
+```shell
+gpg --fingerprint 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+```
+
+The output will look like this:
+
+输出应该类似这样：
+
+```plain
+pub   rsa4096 2012-03-05 [SC] [expires: 2025-01-24]
+      44C6 513A 8E4F B3D3 0875  F758 ED44 4FF0 7D8D 0BF6
+uid           [ full] Kali Linux Repository <devel@kali.org>
+sub   rsa4096 2012-03-05 [E] [expires: 2025-01-24]
+```
+
+You’re now set up to validate your Kali Linux download.
+
+你现在已经准备好校验你的 Kali Linux 下载了。
+
+### How Do I Verify My Downloaded Image? | 如何校验我下载的镜像？
+
+#### Manually Verify the Signature on the ISO (Direct Download) | 手动校验 ISO 签名（直接下载）
+
+If you downloaded the ISO directly from the downloads page, verify it using the following procedure.
+
+如果你是直接从下载页面下载的 ISO ，请按照下面的过程校验你的 ISO 镜像。
+
+On Linux, or macOS, you can generate the SHA256 checksum from the ISO image you’ve downloaded with the following command (assuming that the ISO image is named “kali-linux-2022.3-live-amd64.iso”, and is in your current directory):
+
+在 Linux 或者 macOS 上，你可以通过下面的命令从 ISO 镜像生成 SHA256 校验和（假设 ISO 镜像的文件名是 “kali-linux-2022.3-live-amd64.iso” ， 并且在你的当前目录）：
+
+```shell
+shasum -a 256 kali-linux-2022.3-live-amd64.iso
+```
+
+The output should look like this:
+
+输出应该类似这样：
+
+```plain
+f87618a6df20b6fdf4edebee1c6f1d808dee075a431229b3f75a5208e3c9c0e8  kali-linux-2022.3-live-amd64.iso
+```
+
+On Windows, you can open the command prompt and run
+
+在 Windows 上，你可以打开命令提示符然后运行
+
+```cmd
+certutil -?
+```
+
+If certutil is available, you can run:
+
+如果  certutil 可用，你可以运行：
+
+```cmd
+certutil -hashfile kali-linux-2022.3-live-amd64.iso sha256
+```
+
+To verify your download. Certain versions of Windows do not have the native ability to calculate SHA256 checksums. If you do not have `certutil` installed, you can use a utility such as [Microsoft File Checksum Integrity Verifier](http://www.microsoft.com/en-us/download/details.aspx?id=11533) or [Hashtab](http://implbits.com/products/hashtab/) to verify your download.
+
+为了校验你的下载。特定版本的 windows 原生不支持计算 SHA256 校验和。如果你没有安装 `certutil` ，你可以使用 Microsoft File Checksum Integrity Verifier 或者 Hashtab 之类的程序校验你的下载。
+
+SHA256 签名结果：
+
+```plain
+f87618a6df20b6fdf4edebee1c6f1d808dee075a431229b3f75a5208e3c9c0e8
+```
+
+Can be seen to match the signature displayed in the “sha256sum” section on the official download page for the 64-bit Intel architecture Kali Linux 2022.3 ISO image:
+
+可以看出与在官方下载页面的 64-bit Intel architecture Kali Linux 2022.3 ISO 镜像在“sha256sum” 部分显示的一致：
+
+![sha256sum of 64-bit Intel architecture Kali Linux 2022.3 ISO image](https://www.kali.org/docs/introduction/download-official-kali-linux-images/kali-download-iso-2022-3.png)
+
+#### Verify the Signature on the ISO Using the Included Signature File (Torrent Download) | 使用签名文件校验 ISO 签名(Torrent 下载)
+
+If you downloaded your copy of the Kali Linux ISO image via the torrents, in addition to the ISO file (e.g. kali-linux-2022.3-live-amd64.iso), there will be a second file containing the computed SHA256 signature for the ISO, with the extension “.txt.sha256sum” (e.g. kali-linux-2022.3-live-amd64.txt.sha256sum).
+
+如果你是通过种子下载 Kali Linux ISO 镜像，除了 ISO 镜像之外（例如：kali-linux-2022.3-live-amd64.iso），还有一个包含 SHA256 的签名文件，扩展名为 “.txt.sha256sum” （例如：kali-linux-2022.3-live-amd64.txt.sha256sum）。
+
+You can use this file to verify the authenticity of your download on Linux or macOS with the following command:
+
+在 Linux 和 macOS 上，你可以通过下面的命令使用签名文件校验你的下载的真实性：
+
+```shell
+grep kali-linux-2022.3-live-amd64.iso kali-linux-2022.3-live-amd64.txt.sha256sum | shasum -a 256 -c
+```
+
+If the image is successfully authenticated, the response will look like this:
+
+如果镜像校验成功，应该得到类似下面的结果：
+
+```shell
+kali-linux-2022.3-live-amd64.iso: OK
+```
+
+For Windows, provided you have `certutil` you can use the command above and then manually check the contents of the txt file to see if the two SHA256 sums match. If `certutil` is not available, any of the tools stated above would be able to provide you the SHA256 sum of your download.
+
+对于 windows ，倘若你有 `certutil` ，你可以使用上面的命令，然后手动检查是否 txt 文件中的 SHA256 一致。如果 `certutil` 不可用，上面列出的任意一种都可以计算 SHA256 值。
+
+{% note warning %}
+IMPORTANT! If you are unable to verify the authenticity of the Kali Linux image you have downloaded as described in the preceding section, do NOT use it! Using it could endanger not only your own system, but any network you connect to as well as the other systems on that network. Stop, and ensure that you have downloaded the images from a legitimate Kali Linux mirror.
+重要！如果你按照前面的方法下载的 Kali Linux 镜像无法通过校验，不要使用它！使用它不仅可能损坏你自己的系统，而且会损坏你连接的网络中的其他系统。停止安装并且确认你是从一个合法的镜像源下载的 Kali Linux。
+{% endnote%}
+
+#### Verify the ISO Using the SHA256SUMS File | 使用 SHA256SUMS 文件校验 ISO
+
+{% note info %}
+If using Powershell on Windows you may receive a fully uppercase result. This can cause an error when comparing the two sums. Send this result through a [converter](https://convertcase.net/) to get a proper result.
+如果在windows 中使用 Powershell ，你可能得到一个全大写的结果。这会在比较两个值的时候出错。可以通过[转换器](https://convertcase.net/)得到一个正确的结果。
+{% endnote %}
+
+This is a more complex procedure, but offers a much higher level of validation: it does not rely on the integrity of the web site you downloaded the image from, only the official Kali Linux development team key that you install independently. To verify your image this way for an Intel architecture version of Kali, you will need to download three files from the [Kali “Live CD Image” site for the current release](http://cdimage.kali.org/current/) (v2022.3, as of this writing):
+
+这是一个更复杂的过程，但提供一个更高层次的验证：它不依靠你下载镜像的站点的完整性，仅仅依靠你独立安装的 Kali Linux 官方团队密钥。为了用这种方式校验你的镜像，对于 Intel 架构版本的 Kali ，你需要从 [Kali “Live CD Image” site for the current release](http://cdimage.kali.org/current/)（对于本文档是 v2022.3） 下载三个文件：
+
++ The ISO image itself (e.g. kali-linux-2022.3-live-amd64.iso)
+    ISO 镜像本身（例如： kali-linux-2022.3-live-amd64.iso）
+
++ The file containing the calculated SHA256 hash for the ISO, SHA256SUMS
+    包含 ISO 计算出的 SHA256 值的文件，即 SHA256SUMS
+
++ The signed version of that file, SHA256SUMS.gpg
+    签名过的 SHA256 文件，即 SHA256SUMS.gpg
+
+Before verifying the checksums of the image, you must ensure that the SHA256SUMS file is the one generated by Kali Linux. That’s why the file is signed by Kali’s official key with a detached signature in SHA256SUMS.gpg. If you have not already done so, Kali’s official key can be downloaded and imported into your keychain with this command:
+
+在校验镜像的校验值之前，你必须确保 SHA256SUMS 文件是由 Kali Linux 生成的。这就是为什么 SHA256SUMS.gpg 需要Kali 官方密钥单独签名。如果你还没有这么做，你可以用下面的命令下载和导入 Kali 官方密钥：
+
+```shell
+wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
+```
+
+or this command
+
+或者
+
+```shell
+gpg --keyserver hkps://keys.openpgp.org --recv-key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+```
+
+Your output should look like this:
+
+输出应该类似这样：
+
+```plain
+gpg: key ED444FF07D8D0BF6: public key "Kali Linux Repository <devel@kali.org>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+```
+
+You should verify that the key is properly installed with the command:
+
+你应该用这个命令检验密钥已经被正确安装：
+
+```shell
+gpg --fingerprint 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+```
+
+The output will look like this:
+
+输出应该类似这样：
+
+```plain
+pub   rsa4096 2012-03-05 [SC] [expires: 2025-01-24]
+      44C6 513A 8E4F B3D3 0875  F758 ED44 4FF0 7D8D 0BF6
+uid           [ full] Kali Linux Repository <devel@kali.org>
+sub   rsa4096 2012-03-05 [E] [expires: 2025-01-24]
+```
+
+Once you have downloaded both SHA256SUMS and SHA256SUMS.gpg, you can verify the signature as follows:
+
+一旦你下载了 SHA256SUMS 和 SHA256SUMS.gpg ，你可以按照下面的方法校验签名：
+
+```shell
+$ gpg --verify SHA256SUMS.gpg SHA256SUMS
+gpg: Signature made Mon Sep  2 06:42:05 2019 EDT
+gpg:                using RSA key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+gpg: Good signature from "Kali Linux Repository <devel@kali.org>" [full]
+```
+
+{% note info %}
+If you do not get that “Good signature” message or if the key ID does not match, then you should stop and review whether you downloaded the images from a legitimate Kali Linux mirror. The failed verification strongly suggests that the image you have may have been tampered with.
+如果结果不是 “Good signature” 或者密钥 ID 不匹配，你应该停止安装并且检查镜像是否是从 Kali Linux 合法镜像源下载的，校验失败强烈说明你的镜像可能被篡改。
+{% endnote %}
+
+If you did get the “Good signature” response, you can now be assured that the checksum in the SHA256SUMS file was actually provided by the Kali Linux development team. All that remains to be done to complete the verification is to validate that the signature you compute from the ISO you’ve downloaded matches the one in the SHA256SUMS file. You can do that on Linux or macOS with the following command (assuming that the ISO is named “kali-linux-2022.3-live-amd64.iso” and is in your working directory):
+
+如果结果是 “Good signature” ，那么你现在你可以确认 SHA256SUMS 中的校验值确实是有 Kali Linux 开发团队提供的。剩下要做的就是确认你下载的 ISO 镜像计算出的签名和 SHA256SUMS 文件中的值是匹配的。你可以在 Linux 和 macOS 中使用下面的命令（假设 ISO 文件名是： “kali-linux-2022.3-live-amd64.iso” 并在当前目录中）：
+
+```shell
+grep kali-linux-2022.3-live-amd64.iso SHA256SUMS | shasum -a 256 -c
+```
+
+If the image is successfully authenticated, the response will look like this:
+
+If the image is successfully authenticated, the response will look like this:
+
+如果镜像校验成功，应该得到类似下面的结果：
+
+```plain
+kali-linux-2022.3-live-amd64.iso: OK
+```
+
+{% note info %}
+If you do not get “OK” in response, then stop and review what’s happened: the Kali image you have has apparently been tampered with. Do NOT use it.
+如果结果不是 “OK” ，停止安装，你的 Kali Linux 明显被篡改了。不要再使用它！
+{% endnote %}
+
+Once you’ve downloaded and verified your image, you can [proceed to create a bootable “Kali Linux Live” USB drive](https://www.kali.org/docs/usb/live-usb-install-with-windows/).
+
+一旦你下载且验证了你的镜像，你就可以继续创建一个可启动的 “Kali Linux Live” 。
+
+Updated on: *2022-Aug-10*
+Authors: [*g0tmi1k*](https://gitlab.com/g0tmi1k), [*gamb1t*](https://gitlab.com/gamb1t)
+
+---
+
+## Download Kali Linux Images Securely | 安全地下载 Kali Linux 镜像
+
+When you download an image, be sure to download the SHA256SUMS and SHA256SUMS.gpg files that are next to the downloaded image (i.e. in the same directory on the [Kali Linux Download Server](http://cdimage.kali.org/)). Before verifying the checksums of the image, you must ensure that the SHA256SUMS file is the one generated by Kali. That’s why the file is signed by Kali’s official key with a detached signature in SHA256SUMS.gpg. Kali’s official key can be downloaded like so:
+
+当你下载镜像时，记得同时下载 SHA256SUMS 和 SHA256SUMS.gpg 文件，它们就在镜像文件的旁边（例如：在 Kali Linux 下载服务器相同目录下）。在验证镜像文件之前，你必须确认 SHA256SUMS 文件是由 Kali 官方生成的。这就是为什么这个文件是由 Kali 官方密钥单独加密并保存在 SHA256SUMS.gpg 中。Kali 的官方密钥可以用这样的方式下载：
+
+```shell
+$ wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
+# or...
+$ gpg --keyserver hkps://keyserver.ubuntu.com --recv-key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+# ...and verify that the displayed fingerprint matches the one below
+$ gpg --fingerprint 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+pub   rsa4096/0xED444FF07D8D0BF6 2012-03-05 [SC] [expires: 2023-01-16]
+uid [ unknown] Kali Linux Repository <devel@kali.org>
+sub   rsa4096/0xA8373E18FC0D0DCB 2012-03-05 [E] [expires: 2023-01-16]
+```
+
+Once you have downloaded both SHA256SUMS and SHA256SUMS.gpg, you can verify the signature as follows:
+
+一旦你下载了 SHA256SUMS 和 SHA256SUMS.gpg ，你就可以通过下面的方式校验签名：
+
+```shell
+$ wget -q https://cdimage.kali.org/current/SHA256SUMS{.gpg,}
+$ gpg --verify SHA256SUMS.gpg SHA256SUMS
+gpg: Signature made Tue 17 Nov 2020 15:39:09 GMT
+gpg:                using RSA key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
+gpg: Good signature from "Kali Linux Repository <devel@kali.org>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 44C6 513A 8E4F B3D3 0875  F758 ED44 4FF0 7D8D 0BF6
+```
+
+If you don’t get that “Good signature” message or if the key ID doesn’t match, then you should stop the process and review whether you downloaded the images from a legitimate Kali mirror.
+
+如果结果不是 “Good signature” 或者密钥 ID 不匹配，你应该停止安装并且检查镜像是否是从 Kali Linux 合法镜像源下载的。
+
+Updated on: *2022-Jul-26*
+Author: [*daniruiz*](https://gitlab.com/daniruiz)
+
+---
+
+## Kali's Default Credentials | Kali 默认证书
+
+Kali changed to a [non-root user policy](https://www.kali.org/docs/policy/kali-linux-user-policy/) by default since the release of 2020.1.
+
+从 2020.1 版本开始， Kali 默认为 non-root 模式。
+
+This means:
+
+这意味着：
+
++ During the installation of [amd64 and i386 images](https://www.kali.org/docs/installation/), it will prompt you for a standard user account to be created.
+
+    在 amd64 和 i386 镜像安装过程中，会提示你创建一个标准用户账号。
+
++ Any default operating system credentials used during Live Boot, or pre-created image (like [Virtual Machines](https://www.kali.org/docs/virtualization/) & [ARM](https://www.kali.org/docs/virtualization/)) will be:
+
+  所有 Live 启动或者预创建的镜像（像：虚拟机和ARM）的默认证书为：
+
+  + User: `kali`
+  + Password: `kali`
+
++ Vagrant image (based on their [policy](https://www.vagrantup.com/docs/boxes/base.html)):
+  Vagrant 镜像（根据他们的政策）：
+
+  + Username: `vagrant`
+  + Password: `vagrant`
+
++ [Amazon EC2](https://www.kali.org/docs/cloud/aws/):
+
+  + User: `kali`
+  + Password: `<ssh key>`
+
+### Default Tool Credentials | 工具的默认证书
+
+Some tools shipped with Kali, will use their own default hardcoded credentials (others will generate a new password the first time its used). The following tools have the default values:
+
+Kali 附带的一些工具，使用它们默认的硬编码证书（其它的会在它们第一次被使用的时候生成一个新的密码）。下列工具拥有默认值：
+
++ [BeEF-XSS](https://www.kali.org/tools/beef-xss/)
+
+  + Username: `beef`
+  + Password: `beef`
+  + Configuration File: `/etc/beef-xss/config.yaml`
+
++ MySQL
+
+  + User: `root`
+  + Password: *(blank)*
+  + Setup Program:` mysql_secure_installation`
+
++ [OpenVAS](https://www.kali.org/tools/gvm/)
+
+  + Username: `admin`
+  + Password: `<Generated during setup>`
+  + Setup Program: `openvas-setup`
+
++ [Metasploit-Framework](https://www.kali.org/tools/metasploit-framework/)
+
+  + Username: `postgres`
+  + Password: `postgres`
+  + Configuration File: `/usr/share/metasploit-framework/config/database.yml`
+
++ PowerShell-Empire/Starkiller
+
+  + Username: `empireadmin`
+  + Password: `password123`
+
+For versions of Kali Linux older than 2020.1, here is our [previous credential information](https://www.kali.org/docs/introduction/kali-linux-default-passwords/) and [root policy](https://www.kali.org/docs/policy/kali-linux-root-user-policy/) information.
+
+对于比 2020.1 更早的版本，这是我们之前的[证书信息](https://www.kali.org/docs/introduction/kali-linux-default-passwords/)和 [root 用户政策](https://www.kali.org/docs/policy/kali-linux-root-user-policy/)。
+
+Updated on: *2022-Jul-26*
+Author: [*g0tmi1k*](https://gitlab.com/g0tmi1k)
 
 ## Kali Undercover
 
-## Kali Press Release
+Kali Undercover is a set of scripts that changes the look and feel of your Kali Linux desktop environment to Windows 10 desktop environment, like *magic*.
 
-## Kali Linux History
+Kali Undercover 一系列脚本的集合，可以让 Kali Linux 桌面环境看起来和用起来都想 Windows 10 桌面环境，就像魔法一样。
 
-## Kali ARM History
+It was released with [Kali Linux 2019.4](https://www.kali.org/blog/kali-linux-2019-4-release/) with an important concept in mind, *to hide in plain sight*.
 
-## Kali NetHunter History -->
+它是随着 Kali Linux 2019.4 版本发布，最重要的概念就是，隐藏自己。
+
+> 意思就是假装自己不是在用 Kali Linux ，而是在用 Windows 10 。这样别人就不知道你是个黑客了，从而隐藏自己。
+
+![Kali Undercover](https://www.kali.org/docs/introduction/kali-undercover/kali-undercover-1.gif)
+
+### Going “undercover” | 切换至 undercover 模式
+
+Switching to undercover mode is pretty straight-forward, just run the following command:
+
+切换之 undercover 模式非常的直截了当，只要运行下面的命令：
+
+```shell
+kali@kali:~$ kali-undercover
+kali@kali:~$
+```
+
+or, you can also look for “Kali Undercover Mode” from menu of your desktop and launch it.
+
+或者你可以从桌面菜单找到并启动它。
+
+Swoosh! Now, you are completely *(almost)* invisible. The script will turn your desktop environment’s look and feel similar to that of Windows 10.
+
+嗖~ 现在你几乎完全隐形了。脚步会让你的桌面环境看起来和用起来都像是 Windows 10 。
+
+### Reverting Back | 恢复
+
+Now, to revert back into your previous desktop settings just re-enter the previous command:
+
+现在，恢复之前的桌面只需要重新输入之前的命令：
+
+```shell
+kali@kali:~$ kali-undercover
+kali@kali:~$
+```
+
+Ta-da! Welcome back! Now, all your desktop settings should be restored to.
+
+嗒哒！欢迎回来！现在，你的所有的桌面设置都恢复了。
+
+### Purpose of Undercover Mode in Kali Linux | Undercover 模式的目的
+
+The main purpose of introducing Kali Undercover mode is to prevent any unnecessary attention while using Kali Linux in public.
+
+Kali Undercover 的主要目的是避免任何在公共场合使用 Kali Linux 的不必要关注。
+
+Let’s imagine a scenario: you are ethically pentesting your client and you are in their office or reception doing reconnaissance or something that involves the use of Kali Linux.
+
+想象这样一个场景：你正在道德渗透你的客户，而你在客户的办公室或者接待室做一些情报收集或者其他需要用到 Kali Linux 的情形。
+
+What if someone from your client’s office or some random on-looker spot your desktop environment/wallpaper of Kali Linux and they might think you are doing something mischievous even though you are doing it ethically and warn the authority. All the hard work that you did from the beginning to become stealthy will go in vain. And that’s because of what? A wallpaper! For a client who requested you to become stealthy, this is not what you would want.
+
+如果你的客户办公室中的某人或者某个随机的旁观者瞄到了你的 Kali Linux 桌面环境/壁纸，他们或许会认为你在做一些恶意的事情，尽管你是道德上的并且通知过负责人。你从一开始对保持隐蔽的努力就此付诸东流。这都是因为什么？一张壁纸！对于希望你保持隐蔽的客户来说，这是你不想看到的。
+
+Hence, to prevent any kind of unwanted attention from public it’s better to go “Undercover!”.
+因此，为了防止在公共场合中不必要的关注，最好就是启动 Undercover 模式。
+
+Updated on: *2022-Jul-26*
+Author: [*theGorkha*](https://gitlab.com/theGorkha)
+
+## Kali Press Release | Kali 新闻稿
+
