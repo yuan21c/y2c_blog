@@ -4,23 +4,24 @@
     }
 
     #aside-content {
-        width: 100% !important;
+        min-width: 19em !important;
+        /* width: 100% !important; */
     }
 }
 
 @media screen and (min-width: 901px) {
 
     /* 中心部分 */
-    .layout {
+    /* .layout {
         max-width: 100%;
         align-content: center;
-    }
+    } */
 
     /* 侧边栏 */
     #aside-content {
-        max-width: 24em !important;
+        /* max-width: 24em !important; */
         min-width: 19em !important;
-        width: 36% !important;
+        /* width: 36% !important; */
     }
 }
 
@@ -28,30 +29,30 @@
 @media screen and (min-width: 1080px) {
 
     /* 中心部分 */
-    .layout {
+    /* .layout {
         min-width: 1000px;
         max-width: 1100px;
         width: 100%;
         align-content: center;
-    }
+    } */
 
     /* 侧边栏 */
-    #aside-content {
+    /* #aside-content {
         width: 24em !important;
         padding-right: 15px;
-    }
+    } */
 
     /* 整个文章区域的 div */
-    #recent-posts {
+    /* #recent-posts {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: stretch;
         width: 100%;
-    }
+    } */
 
     /* 单个文章的 div */
-    #recent-posts>.recent-post-item {
+    /* #recent-posts>.recent-post-item {
         display: flex;
         flex-direction: column-reverse;
         height: auto;
@@ -61,58 +62,58 @@
         flex-wrap: wrap;
         flex: 0 0 48%;
         margin-bottom: 20px;
-    }
+    } */
 
     /* 非第一个文章 */
-    #recent-posts>.recent-post-item:not(:first-child) {
+    /* #recent-posts>.recent-post-item:not(:first-child) {
         margin-top: 0;
-    }
+    } */
 
     /* 最后一元素是页码，使其独占一行 */
-    #pagination {
+    /* #pagination {
         width: 100%;
-    }
+    } */
 
     /* 文章的图片 */
-    #recent-posts>.recent-post-item .post_cover.right {
+    /* #recent-posts>.recent-post-item .post_cover.right {
         width: 100%;
         flex: 2 1 0;
         flex-wrap: wrap;
-    }
+    } */
 
     /* 文章的文字说明 */
-    #recent-posts>.recent-post-item>.recent-post-info {
+    /* #recent-posts>.recent-post-item>.recent-post-info {
         width: 100%;
         height: 30%;
         flex-wrap: wrap;
         padding: 20px 20px 30px
-    }
+    } */
 }
 
 @media screen and (min-width: 1380px) {
 
     /* 中心部分 */
-    .layout {
+    /* .layout {
         min-width: 1300px;
         max-width: 1500px;
-    }
+    } */
 
     /* 每行三个 */
-    #recent-posts>.recent-post-item {
+    /* #recent-posts>.recent-post-item {
         flex: 0 0 32%;
-    }
+    } */
 }
 
 @media screen and (min-width: 1680px) {
 
     /* 中心部分 */
-    .layout {
+    /* .layout {
         min-width: 1600px;
         max-width: 1800px;
-    }
+    } */
 
     /* 每行四个 */
-    #recent-posts>.recent-post-item {
+    /* #recent-posts>.recent-post-item {
         flex: 0 0 24%;
-    }
+    } */
 }

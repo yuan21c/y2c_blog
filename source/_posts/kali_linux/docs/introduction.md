@@ -282,14 +282,14 @@ The following sections in the “Kali Documentation Installation” of this docu
 
 ## Downloading Kali Linux |下载 Kali linux
 
-{% note warning %}
-IMPORTANT! Never download Kali Linux images from anywhere other than the official sources.
-重要！永远不要从非官方源下载 Kali Linux 的镜像。
-Always be sure to verify the SHA256 checksums of the file you’ve downloaded against our [official values](https://www.kali.org/docs/introduction/download-images-securely/).
-永远记住校验 SHA256 值，确认你下载和文件的 SHA256 值和[官方值]()相同。
-It would be easy for a malicious entity to modify a Kali installation to contain exploits or malware and host it unofficially.
-对于一个恶意实体来说，修改 kali 安装文件以包含漏洞或者恶意软件是很容易的事。
-{% endnote %}
+> IMPORTANT! Never download Kali Linux images from anywhere other than the official sources.
+> 重要！永远不要从非官方源下载 Kali Linux 的镜像。
+>
+> Always be sure to verify the SHA256 checksums of the file you’ve downloaded against our [official values](https://www.kali.org/docs/introduction/download-images-securely/).
+> 永远记住校验 SHA256 值，确认你下载和文件的 SHA256 值和[官方值]()相同。
+>
+> It would be easy for a malicious entity to modify a Kali installation to contain exploits or malware and host it unofficially.
+> 对于一个恶意实体来说，修改 kali 安装文件以包含漏洞或者恶意软件是很容易的事。
 
 ### Where to Get Official Kali Linux Images |哪里能获取到 Kali Linux 镜像
 
@@ -529,17 +529,13 @@ For Windows, provided you have `certutil` you can use the command above and then
 
 对于 windows ，倘若你有 `certutil` ，你可以使用上面的命令，然后手动检查是否 txt 文件中的 SHA256 一致。如果 `certutil` 不可用，上面列出的任意一种都可以计算 SHA256 值。
 
-{% note warning %}
-IMPORTANT! If you are unable to verify the authenticity of the Kali Linux image you have downloaded as described in the preceding section, do NOT use it! Using it could endanger not only your own system, but any network you connect to as well as the other systems on that network. Stop, and ensure that you have downloaded the images from a legitimate Kali Linux mirror.
-重要！如果你按照前面的方法下载的 Kali Linux 镜像无法通过校验，不要使用它！使用它不仅可能损坏你自己的系统，而且会损坏你连接的网络中的其他系统。停止安装并且确认你是从一个合法的镜像源下载的 Kali Linux。
-{% endnote%}
+> IMPORTANT! If you are unable to verify the authenticity of the Kali Linux image you have downloaded as described in the preceding section, do NOT use it! Using it could endanger not only your own system, but any network you connect to as well as the other systems on that network. Stop, and ensure that you have downloaded the images from a legitimate Kali Linux mirror.
+> 重要！如果你按照前面的方法下载的 Kali Linux 镜像无法通过校验，不要使用它！使用它不仅可能损坏你自己的系统，而且会损坏你连接的网络中的其他系统。停止安装并且确认你是从一个合法的镜像源下载的 Kali Linux。
 
 #### Verify the ISO Using the SHA256SUMS File | 使用 SHA256SUMS 文件校验 ISO
 
-{% note info %}
-If using Powershell on Windows you may receive a fully uppercase result. This can cause an error when comparing the two sums. Send this result through a [converter](https://convertcase.net/) to get a proper result.
-如果在windows 中使用 Powershell ，你可能得到一个全大写的结果。这会在比较两个值的时候出错。可以通过[转换器](https://convertcase.net/)得到一个正确的结果。
-{% endnote %}
+> If using Powershell on Windows you may receive a fully uppercase result. This can cause an error when comparing the two sums. Send this result through a [converter](https://convertcase.net/) to get a proper result.
+> 如果在windows 中使用 Powershell ，你可能得到一个全大写的结果。这会在比较两个值的时候出错。可以通过[转换器](https://convertcase.net/)得到一个正确的结果。
 
 This is a more complex procedure, but offers a much higher level of validation: it does not rely on the integrity of the web site you downloaded the image from, only the official Kali Linux development team key that you install independently. To verify your image this way for an Intel architecture version of Kali, you will need to download three files from the [Kali “Live CD Image” site for the current release](http://cdimage.kali.org/current/) (v2022.3, as of this writing):
 
@@ -610,10 +606,8 @@ gpg:                using RSA key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
 gpg: Good signature from "Kali Linux Repository <devel@kali.org>" [full]
 ```
 
-{% note info %}
-If you do not get that “Good signature” message or if the key ID does not match, then you should stop and review whether you downloaded the images from a legitimate Kali Linux mirror. The failed verification strongly suggests that the image you have may have been tampered with.
-如果结果不是 “Good signature” 或者密钥 ID 不匹配，你应该停止安装并且检查镜像是否是从 Kali Linux 合法镜像源下载的，校验失败强烈说明你的镜像可能被篡改。
-{% endnote %}
+> If you do not get that “Good signature” message or if the key ID does not match, then you should stop and review whether you downloaded the images from a legitimate Kali Linux mirror. The failed verification strongly suggests that the image you have may have been tampered with.
+> 如果结果不是 “Good signature” 或者密钥 ID 不匹配，你应该停止安装并且检查镜像是否是从 Kali Linux 合法镜像源下载的，校验失败强烈说明你的镜像可能被篡改。
 
 If you did get the “Good signature” response, you can now be assured that the checksum in the SHA256SUMS file was actually provided by the Kali Linux development team. All that remains to be done to complete the verification is to validate that the signature you compute from the ISO you’ve downloaded matches the one in the SHA256SUMS file. You can do that on Linux or macOS with the following command (assuming that the ISO is named “kali-linux-2022.3-live-amd64.iso” and is in your working directory):
 
@@ -633,10 +627,8 @@ If the image is successfully authenticated, the response will look like this:
 kali-linux-2022.3-live-amd64.iso: OK
 ```
 
-{% note info %}
-If you do not get “OK” in response, then stop and review what’s happened: the Kali image you have has apparently been tampered with. Do NOT use it.
-如果结果不是 “OK” ，停止安装，你的 Kali Linux 明显被篡改了。不要再使用它！
-{% endnote %}
+> If you do not get “OK” in response, then stop and review what’s happened: the Kali image you have has apparently been tampered with. Do NOT use it.
+> 如果结果不是 “OK” ，停止安装，你的 Kali Linux 明显被篡改了。不要再使用它！
 
 Once you’ve downloaded and verified your image, you can [proceed to create a bootable “Kali Linux Live” USB drive](https://www.kali.org/docs/usb/live-usb-install-with-windows/).
 
@@ -762,6 +754,8 @@ For versions of Kali Linux older than 2020.1, here is our [previous credential i
 Updated on: *2022-Jul-26*
 Author: [*g0tmi1k*](https://gitlab.com/g0tmi1k)
 
+---
+
 ## Kali Undercover
 
 Kali Undercover is a set of scripts that changes the look and feel of your Kali Linux desktop environment to Windows 10 desktop environment, like *magic*.
@@ -830,5 +824,71 @@ Hence, to prevent any kind of unwanted attention from public it’s better to go
 Updated on: *2022-Jul-26*
 Author: [*theGorkha*](https://gitlab.com/theGorkha)
 
-## Kali Press Release | Kali 新闻稿
+---
 
+## [Kali Press Release](https://www.kali.org/docs/introduction/press-release/) | Kali 新闻稿
+
+暂略
+
+---
+
+## Kali Linux History | Kali Linux 历史
+
+Kali Linux is based on years of knowledge and experience of building a pentestion testing Operating Systems, which has spanned over multiple previous projects. During all these project’s life-time, there has been only a few different developers, as [the team](https://www.kali.org/about-us/) has always been small. As a result, Kali has been years in the making and has come a long way.
+
+Kali Linux 基于多年构建渗透测试操作系统的知识和经验，已经跨越先前多个项目。因为项目团队一直很小，在之前的项目周期中，开发人员极少变动。因此，Kali 项目已经进行了多年并且走过了很长的一段路。
+
+The first project was called **Whoppix**, which stood for **WhiteHat Knoppix**. As can be inferred from the name, it was based on Knoppix for the underlining OS. Whoppix had releases ranging from v2.0 to v2.7.
+
+第一个项目的名称是 **Whoppix** ，取 **“白帽 Knoppix”** 之意。从名字中就能看出，它是基于 [Knoppix](https://www.knopper.net/knoppix/index-en.html) 。Whoppix 从 v2.0 更新至 v2.7 。
+
+> 什么是 underlining OS ?
+
+This made way for the next project, WHAX (or the long hand, WhiteHat Slax). The name change was because the base OS changed from Knoppix to Slax. WHAX started at v3, as a nod towards it carrying on from Whoppix.
+
+由此有了下一个项目：WHAX (或者叫 *白帽 Slax*)。名字发生变化是因为基础系统变更为 Slax 。WHAX 从 v3 开始，作为 Whoppix 的延续。
+
+There was a similar OS being produced at the same time, **Auditor Security Collection** (*often getting shorted to just **Auditor***), once again using Knoppix, and efforts were combined (with WHAX) to produce [BackTrack](https://www.backtrack-linux.org/). BackTrack was based on Slackware from v1 to v3, but switched to Ubuntu later on with v4 to v5.
+
+在此同时，一个相似的系统—— 安全审查员集合（或者叫做安全审查）——开始构建，再一次使用了 Konppix，并与 WHAX 结合构建了 BackTrack 。 BackTrack v1 至 v3 版本基于 Slackware ，从 v4 到 v5 转向了 Ubuntu。
+
+Using the experience gained from all of this, Kali Linux came after BackTrack in [2013](https://www.kali.org/docs/introduction/press-release/). Kali started off using Debian stable as the engine under the hood before moving to [Debian](https://www.kali.org/docs/policy/kali-linux-relationship-with-debian/) testing when Kali became a rolling OS.
+
+基于从这些项目中获得的经验，2013 年 Kali Linux 诞生了。Kali Linux 最开始使用的是 [Dibian 稳定版](https://www.debian.org/) ，之后转向了 [Debian 测试版](https://wiki.debian.org/zh_CN/DebianTesting)，并开始[滚动更新](https://zh.wikipedia.org/wiki/%E6%BB%BE%E5%8B%95%E7%99%BC%E8%A1%8C)。
+
+Below is a rough overview of how Kali Linux came to be:
+
+以下是 Kali Linux 诞生的粗略过程：
+
+Date|Project Released|Base OS
+--|--|--
+2004-August-30|Whoppix v2|Knoppix
+2005-July-17|WHAX v3|Slax
+2006-May-26|BackTrack v1|Slackware Live CD 10.2.0
+2007-March-06|BackTrack v2|Slackware Live CD 11.0.0
+2008-June-19|BackTrack v3|Slackware Live CD 12.0.0
+2010-January-09|BackTrack v4 (Pwnsauce)|Ubuntu 8.10 (Intrepid Ibex)
+2011-May-10|BackTrack v5 (Revolution)|Ubuntu 10.04 (Lucid Lynx)
+2013-March-13|Kali Linux v1 (Moto)|Debian 7 (Wheezy)
+2015-August-11|Kali Linux v2 (Sana)|Debian 8 (Jessie)
+2016-January-16|Kali Linux Rolling|Debian Testing
+
+> This is only the major releases, there were minor ones to address bug fixes, releases, and tools updates.
+> 这只是主要版本，有一些次要版本来解决错误修复，发布和工具更新。
+
+For more details about [Kali Linux’s history, see this page](https://kali.training/topic/a-bit-of-history/) and our [press release](https://www.kali.org/docs/introduction/press-release/). And for more information about [Kali Linux’s releases, see this page](https://www.kali.org/releases/).
+
+*Updated on: 2022-Jul-26*
+*Author: [g0tmi1k](https://gitlab.com/g0tmi1k)*
+
+---
+
+## Kali ARM History | Kali Linux ARM 历史
+
+暂略
+
+---
+
+## Kali NetHunter History | Kali Linux NetHunter 历史
+
+暂略
