@@ -26,3 +26,23 @@ blockquote {
 .note {
     border-radius: 8px;
 }
+
+/* TOC */
+#aside-content #card-toc .toc-content{
+    overflow: unset;
+    margin: 0 !important;
+}
+
+#aside-content #card-toc .toc-content > *{
+    margin: 0 !important;
+}
+
+/* TOC 字体大小 */
+#aside-content #card-toc .toc-content .toc-link {
+    font-size: 14px;
+}
+
+/* 文章两端对齐 */
+#article-container p {
+    text-align: justify;
+}

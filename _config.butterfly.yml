@@ -528,7 +528,7 @@ background: url(https://iili.io/sRmaNs.jpg)
 
 
 # Footer Background
-footer_bg: "#46749920"
+footer_bg: "#467499"
 # footer_bg: 80%
 
 # the position of bottom right button/default unit: px (右下角按鈕距離底部的距離/默認單位為px)
@@ -609,7 +609,7 @@ beautify:
 # Global font settings
 # Don't modify the following settings unless you know how they work (非必要不要修改)
 font:
-  global-font-size:
+  global-font-size: 16px
   code-font-size: 16px
   font-family:
   code-font-family:
@@ -622,7 +622,7 @@ blog_title_font:
 
 # The setting of divider icon (水平分隔線圖標設置)
 hr_icon:
-  enable: true
+  enable: false
   icon: # the unicode value of Font Awesome icon, such as '\3423'
   icon-top:
 
