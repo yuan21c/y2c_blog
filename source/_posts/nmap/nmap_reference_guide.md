@@ -1,7 +1,7 @@
 ---
 title: Nmap 参考指南 (Man Page)
 date: 2022-10-03 17:26:15
-updated: 2022-10-03 17:26:15
+updated: 2022-10-19 07:39:28
 categories: nmap
 tags:
     - nmap
@@ -342,15 +342,15 @@ By default, Nmap does host discovery and then performs a port scan against each 
 
 + `-PS <port list>` (TCP SYN Ping)
 
-    This option sends an empty TCP packet with the SYN flag set. The default destination port is 80 (configurable at compile time by changing `DEFAULT_TCP_PROBE_PORT_SPEC` in `nmap.h`). Alternate ports can be specified as a parameter. The syntax is the same as for the -p except that port type specifiers like T: are not allowed. Examples are -PS22 and -PS22-25,80,113,1050,35000. Note that there can be no space between -PS and the port list. If multiple probes are specified they will be sent in parallel.
+    This option sends an empty TCP packet with the SYN flag set. The default destination port is 80 (configurable at compile time by changing `DEFAULT_TCP_PROBE_PORT_SPEC` in `nmap.h`). Alternate ports can be specified as a parameter. The syntax is the same as for the `-p` except that port type specifiers like `T`: are not allowed. Examples are `-PS22` and `-PS22-25,80,113,1050,35000`. Note that there can be no space between `-PS` and the port list. If multiple probes are specified they will be sent in parallel.
 
-    该选项发送一个设置了SYN标志位的空TCP报文。 默认目的端口为80 (可以通过修改 `nmap.h` 文件中的`DEFAULT-TCP-PROBE-PORT` 值进行配置)
+    该选项发送一个设置了SYN标志位的空TCP报文。 默认目的端口为80 (可以通过修改 `nmap.h` 文件中的`DEFAULT-TCP-PROBE-PORT` 值进行配置)。替代的端口可以作为参数指定。语法和 `-p` 选项是一样的，除了端口类型的制定符，比如 `T`， 是不被允许的。例如：`-PS22` 和 `-PS22-25,80,113,1050,35000` 。注意，在 `-PS` 和端口列表之间没有空格。如果指定了多个探针，它们会被并行发送。
 
-           The SYN flag suggests to the remote system that you are attempting to establish a connection. Normally the destination port will be closed,
-           and a RST (reset) packet sent back. If the port happens to be open, the target will take the second step of a TCP three-way-handshake by
-           responding with a SYN/ACK TCP packet. The machine running Nmap then tears down the nascent connection by responding with a RST rather than
-           sending an ACK packet which would complete the three-way-handshake and establish a full connection. The RST packet is sent by the kernel of
-           the machine running Nmap in response to the unexpected SYN/ACK, not by Nmap itself.
+    The SYN flag suggests to the remote system that you are attempting to establish a connection. Normally the destination port will be closed, and a RST (reset) packet sent back. If the port happens to be open, the target will take the second step of a TCP three-way-handshake by responding with a SYN/ACK TCP packet. The machine running Nmap then tears down the nascent connection by responding with a RST rather than sending an ACK packet which would complete the three-way-handshake and establish a full connection. The RST packet is sent by the kernel of the machine running Nmap in response to the unexpected SYN/ACK, not by Nmap itself.
+
+    SYN 标志位告诉对方您正试图建立一个连接。通常目标端口是关闭的，一个 RST (复位) 包会发回来。如果碰巧端口是开放的，目标会进行 TCP 三次握手的第二步，回应一个 SYN/ACK TCP 报文。
+
+<!--
 
            Nmap does not care whether the port is open or closed. Either the RST or SYN/ACK response discussed previously tell Nmap that the host is
            available and responsive.
@@ -2005,4 +2005,4 @@ By default, Nmap does host discovery and then performs a port scan against each 
        34. EAR 740.13(e)
            https://www.bis.doc.gov/index.php/documents/regulations-docs/2341-740-2/file
 
-Nmap     08/06/2021       NMAP(1)
+Nmap     08/06/2021       NMAP(1) -->

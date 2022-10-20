@@ -1,10 +1,7 @@
-/* 底部 */
-#footer {
-    /* background: linear-gradient(#2e4f6400, 20%, #2e4f6490) !important; */
-}
-
-#footer:before {
-    /* background-color: rgba(0, 0, 0, 0) !important; */
+@media screen and (max-width: 900px) {
+    .layout>div:first-child {
+        order: 0;
+    }
 }
 
 /* 侧边栏距顶部距离 */
@@ -13,15 +10,6 @@
 }
 
 /* 夜间模式压黑背景 */
-[data-theme='dark'] #web_bg:before{
+[data-theme='dark'] #web_bg:before {
     background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-/* 侧边栏 */
-#aside-content {
-    width: 19em !important;
-}
-
-.layout > div:first-child{
-    width: 70%;
 }
