@@ -330,7 +330,7 @@ By default, Nmap does host discovery and then performs a port scan against each 
 
     在之前的 Nmap 版本中，`-sn` 叫做 `-sP` 。
 
-+ -Pn (No ping 无ping)
++ `-Pn` (No ping 无ping)
 
     This option skips the host discovery stage altogether. Normally, Nmap uses this stage to determine active machines for heavier scanning and to gauge the speed of the network. By default, Nmap only performs heavy probing such as port scans, version detection, or OS detection against hosts that are found to be up. Disabling host discovery with `-Pn` causes Nmap to attempt the requested scanning functions against every target IP address specified. So if a `/16` sized network is specified on the command line, all 65,536 IP addresses are scanned. Proper host discovery is skipped as with the list scan, but instead of stopping and printing the target list, Nmap continues to perform requested functions as if each target IP is active. Default timing parameters are used, which may result in slower scans. To skip host discovery and port scan, while still allowing NSE to run, use the two options `-Pn` `-sn` together.
 
@@ -348,47 +348,41 @@ By default, Nmap does host discovery and then performs a port scan against each 
 
     The SYN flag suggests to the remote system that you are attempting to establish a connection. Normally the destination port will be closed, and a RST (reset) packet sent back. If the port happens to be open, the target will take the second step of a TCP three-way-handshake by responding with a SYN/ACK TCP packet. The machine running Nmap then tears down the nascent connection by responding with a RST rather than sending an ACK packet which would complete the three-way-handshake and establish a full connection. The RST packet is sent by the kernel of the machine running Nmap in response to the unexpected SYN/ACK, not by Nmap itself.
 
-    SYN 标志位告诉对方您正试图建立一个连接。通常目标端口是关闭的，一个 RST (复位) 包会发回来。如果碰巧端口是开放的，目标会进行 TCP 三次握手的第二步，回应一个 SYN/ACK TCP 报文。
+    SYN 标志位告诉对方您正试图建立一个连接。通常目标端口是关闭的，一个 RST (复位) 包会发回来。如果碰巧端口是开放的，目标会进行 TCP 三次握手的第二步，回应一个 SYN/ACK TCP 报文。然后运行 Nmap 的机器则会扼杀这个正在建立的连接，发送一个 RST 而非 ACK 报文，否则，一个完全的连接将会建立。RST 报文是运行 Nmap 的机器而不是Nmap本身响应的，因为它对收到的 SYN/ACK 感到很意外。
+
+    Nmap does not care whether the port is open or closed. Either the RST or SYN/ACK response discussed previously tell Nmap that the host is available and responsive.
+
+    Nmap 并不关心端口开放还是关闭。 无论 RST 还是 SYN/ACK 响应都告诉 Nmap 该主机正在运行。
+
+    On Unix boxes, only the privileged user root is generally able to send and receive raw TCP packets.  For unprivileged users, a workaround is automatically employed whereby the connect system call is initiated against each target port. This has the effect of sending a SYN packet to the target host, in an attempt to establish a connection. If connect returns with a quick success or an ECONNREFUSED failure, the underlying TCP stack must have received a SYN/ACK or RST and the host is marked available. If the connection attempt is left hanging until a timeout is reached, the host is marked as down.
+
+    在UNIX机器上，通常只有特权用户 `root` 能否发送和接收原始的 TCP 报文。因此作为一个变通的方法，对于非特权用户， Nmap会为每个目标主机进行系统调用 `connect()` 。它也会发送一个 SYN 报文来尝试建立连接。如果 `connect()` 迅速返回成功或者一个 ECONNREFUSED 失败，下面的TCP堆栈一定已经收到了一个SYN/ACK或者RST，该主机将被标记为在运行。如果连接超时了，该主机就标志位为 down 掉了。
+
++ `-PA <port list>` (TCP ACK Ping)
+
+    The TCP ACK ping is quite similar to the just-discussed SYN ping. The difference, as you could likely guess, is that the TCP ACK flag is set instead of the SYN flag. Such an ACK packet purports to be acknowledging data over an established TCP connection, but no such connection exists. So remote hosts should always respond with a RST packet, disclosing their existence in the process.
+
+    TCP ACK ping和刚才讨论的SYN ping相当类似。也许您已经猜到了，区别就是设置 TCP ACK 标志位而不是 SYN 标志位。ACK 报文表示确认一个建立连接的尝试，但该连接尚未完全建立。所以远程主机应该总是回应一个 RST 报文，表明它们存在于进程之中。
+
+    The `-PA` option uses the same default port as the SYN probe (80) and can also take a list of destination ports in the same format. If an unprivileged user tries this, the connect workaround discussed previously is used. This workaround is imperfect because connect is actually sending a SYN packet rather than an ACK.
+
+    `-PA` 选项使用和 SYN 探测相同的默认端口 (80)，也可以用相同的格式指定目标端口列表。如果非特权用户尝试该功能，将使用前面说过的 `connect()` 方法。 这个方法并不完美，因为它实际上发送的是SYN报文，而不是ACK报文。
+
+    The reason for offering both SYN and ACK ping probes is to maximize the chances of bypassing firewalls. Many administrators configure routers and other simple firewalls to block incoming SYN packets except for those destined for public services like the company web site or mail server. This prevents other incoming connections to the organization, while allowing users to make unobstructed outgoing connections to the Internet. This non-stateful approach takes up few resources on the firewall/router and is widely supported by hardware and software filters. The Linux Netfilter/iptables firewall software offers the `--syn` convenience option to implement this stateless approach. When stateless firewall rules such as this are in place, SYN ping probes (`-PS`) are likely to be blocked when sent to closed target ports. In such cases, the ACK probe shines as it cuts right through these rules.
+
+    提供 SYN 和 ACK 两种 ping 探测的原因是使通过防火墙的机会尽可能大。许多管理员会配置他们的路由器或者其它简单的防火墙来封锁SYN报文，除非连接目标是那些公开的服务器像公司网站或者邮件服务器。这可以阻止其它进入组织的连接，同时也允许用户访问互联网。这种无状态的方法几乎不占用防火墙/路由器的资源，而且被硬件和软件过滤器广泛支持。Linux Netfilter/iptables 防火墙软件提供方便的 `--syn` 选项来实现这种无状态的方法。当这样的无状态防火墙规则存在时，发送到关闭目标端口的 SYN ping 探测 (`-PS`) 很可能被封锁。这种情况下， ACK 探测格外有闪光点，因为它正好利用了这样的规则。
+
+    Another common type of firewall uses stateful rules that drop unexpected packets. This feature was initially found mostly on high-end firewalls, though it has become much more common over the years. The Linux Netfilter/iptables system supports this through the `--state` option, which categorizes packets based on connection state. A SYN probe is more likely to work against such a system, as unexpected ACK packets are generally recognized as bogus and dropped. A solution to this quandary is to send both SYN and ACK probes by specifying `-PS` and `-PA`.
+
+    另外一种常用的防火墙用有状态的规则来封锁非预期的报文。这一特性最初只存在于高端防火墙，但是这些年来它越来越普遍了。 Linux Netfilter/iptables 通过 `--state` 选项支持这一特性，它根据连接状态把报文进行分类。SYN 探测更有可能用于这样的系统，因为非预期的 ACK 报文通常会被识别成伪造的而丢弃。解决这个两难问题的方法是通过即指定 `-PS` 又指定 `-PA` 来即发送 SYN 又发送 ACK 。
+
++ `-PU <port list>` (UDP Ping)
+
+    Another host discovery option is the UDP ping, which sends a UDP packet to the given ports. For most ports, the packet will be empty, though some use a protocol-specific payload that is more likely to elicit a response. The payload database is described at [https://nmap.org/book/nmap-payloads.html](https://nmap.org/book/nmap-payloads.html).
+
+    还有一个主机发现的选项是UDP ping，它发送一个 UDP 报文到给定的端口。对于大部分的端口来说，报文都是空的，然而，有一些特殊协议有效载荷更有可能引发一个响应。有效载荷数据库
 
 <!--
-
-           Nmap does not care whether the port is open or closed. Either the RST or SYN/ACK response discussed previously tell Nmap that the host is
-           available and responsive.
-
-           On Unix boxes, only the privileged user root is generally able to send and receive raw TCP packets.  For unprivileged users, a workaround is
-           automatically employed whereby the connect system call is initiated against each target port. This has the effect of sending a SYN packet to
-           the target host, in an attempt to establish a connection. If connect returns with a quick success or an ECONNREFUSED failure, the underlying
-           TCP stack must have received a SYN/ACK or RST and the host is marked available. If the connection attempt is left hanging until a timeout is
-           reached, the host is marked as down.
-
-       -PA port list (TCP ACK Ping)
-           The TCP ACK ping is quite similar to the just-discussed SYN ping. The difference, as you could likely guess, is that the TCP ACK flag is set
-           instead of the SYN flag. Such an ACK packet purports to be acknowledging data over an established TCP connection, but no such connection
-           exists. So remote hosts should always respond with a RST packet, disclosing their existence in the process.
-
-           The -PA option uses the same default port as the SYN probe (80) and can also take a list of destination ports in the same format. If an
-           unprivileged user tries this, the connect workaround discussed previously is used. This workaround is imperfect because connect is actually
-           sending a SYN packet rather than an ACK.
-
-           The reason for offering both SYN and ACK ping probes is to maximize the chances of bypassing firewalls. Many administrators configure routers
-           and other simple firewalls to block incoming SYN packets except for those destined for public services like the company web site or mail
-           server. This prevents other incoming connections to the organization, while allowing users to make unobstructed outgoing connections to the
-           Internet. This non-stateful approach takes up few resources on the firewall/router and is widely supported by hardware and software filters.
-           The Linux Netfilter/iptables firewall software offers the --syn convenience option to implement this stateless approach. When stateless
-           firewall rules such as this are in place, SYN ping probes (-PS) are likely to be blocked when sent to closed target ports. In such cases, the
-           ACK probe shines as it cuts right through these rules.
-
-           Another common type of firewall uses stateful rules that drop unexpected packets. This feature was initially found mostly on high-end
-           firewalls, though it has become much more common over the years. The Linux Netfilter/iptables system supports this through the --state
-           option, which categorizes packets based on connection state. A SYN probe is more likely to work against such a system, as unexpected ACK
-           packets are generally recognized as bogus and dropped. A solution to this quandary is to send both SYN and ACK probes by specifying -PS and
-           -PA.
-
-       -PU port list (UDP Ping)
-           Another host discovery option is the UDP ping, which sends a UDP packet to the given ports. For most ports, the packet will be empty, though
-           some use a protocol-specific payload that is more likely to elicit a response.  The payload database is described at
-           https://nmap.org/book/nmap-payloads.html.
-
            Packet content can also be affected with the --data, --data-string, and --data-length options.
 
            The port list takes the same format as with the previously discussed -PS and -PA options. If no ports are specified, the default is 40125.
