@@ -27,3 +27,5 @@ sudo mount -o remount,rw /tmp/.X11-unix
 原文地址:
 
 * [Github - kex unable to connect to socket: connection refused(10061)](https://github.com/microsoft/WSL/discussions/6675#discussioncomment-5012927)
+
+* [Github - /tmp/.X11-unix is being mounted read-only](https://github.com/microsoft/WSL/issues/9303#issuecomment-1345615675)
