@@ -1,7 +1,7 @@
 ---
 title: Nmap 参考指南 (Man Page)
 date: 2022-10-03 17:26:15
-updated: 2022-10-19 07:39:28
+updated: 2023-01-03 02:17:01
 categories: nmap
 tags:
     - nmap
@@ -378,27 +378,20 @@ By default, Nmap does host discovery and then performs a port scan against each 
 
 + `-PU <port list>` (UDP Ping)
 
-    Another host discovery option is the UDP ping, which sends a UDP packet to the given ports. For most ports, the packet will be empty, though some use a protocol-specific payload that is more likely to elicit a response. The payload database is described at [https://nmap.org/book/nmap-payloads.html](https://nmap.org/book/nmap-payloads.html).
+    Another host discovery option is the UDP ping, which sends a UDP packet to the given ports. For most ports, the packet will be empty, though some use a protocol-specific payload that is more likely to elicit a response. The payload database is described at [https://nmap.org/book/nmap-payloads.html](https://nmap.org/book/nmap-payloads.html). Packet content can also be affected with the `--data`, `--data-string`, and `--data-length` options.
 
-    还有一个主机发现的选项是UDP ping，它发送一个 UDP 报文到给定的端口。对于大部分的端口来说，报文都是空的，然而，有一些特殊协议有效载荷更有可能引发一个响应。有效载荷数据库
+    还有一个主机发现的选项是 UDP ping，它发送一个 UDP 报文到给定的端口。对于大部分的端口来说，报文都是空的，然而，有一些特殊协议有效载荷更有可能引发一个响应。有效载荷数据库更详细的描述位于 [https://nmap.org/book/nmap-payloads.html](https://nmap.org/book/nmap-payloads.html) 。包内容同样受到选项 `--data`, `--data-string`, 和 `--data-length` 的影响。
 
+    The port list takes the same format as with the previously discussed `-PS` and `-PA` options. If no ports are specified, the default is `40125`. This default can be configured at compile-time by changing `DEFAULT_UDP_PROBE_PORT_SPEC` in `nmap.h`. A highly uncommon port is used by default because sending to open ports is often undesirable for this particular scan type.
+
+    端口列表采用和前面提到的 `-PS` 和 `-PA` 选项一样的格式。如果未指定端口，其缺省值为 `40125`。此缺省值可以在编译时通过修改 `nmap.h` 文件中的 `DEFAULT_UDP_PROBE_PORT_SPEC` 值来配置。默认使用如此不常见的端口是因为对于开放端口的此种扫描通常是不受欢迎的。
+
+    Upon hitting a closed port on the target machine, the UDP probe should elicit an ICMP port unreachable packet in return. This signifies to Nmap that the machine is up and available. Many other types of ICMP errors, such as host/network unreachables or TTL exceeded are indicative of a down or unreachable host. A lack of response is also interpreted this way. If an open port is reached, most services simply ignore the empty packet and fail to return any response. This is why the default probe port is `40125`, which is highly unlikely to be in use. A few services, such as the Character Generator (chargen) protocol, will respond to an empty UDP packet, and thus disclose to Nmap that the machine is available.
+
+    一旦击中一个目标机器上的关闭的端口，UDP 探针返回一个 ICMP 端口不可达的数据包。对于 Nmap 这意味着机器已经启动并且可用。其它的错误，比如，主机/网络不可达或者 TTL 超时表明主机关机或者不可达。没有响应同样如此。如果到达一个开放端口，大部分服务只是简单地忽略这个空包并且不会返回任何响应。这就是为什么默认的探测端口为 `40125` 这样一个极不可能使用的端口。少数，比如字符生成器协议会响应一个空的 UDP 报文，因此向 Nmap 表明机器可用。
+
+    The primary advantage of this scan type is that it bypasses firewalls and filters that only screen TCP. For example, I once owned a Linksys BEFW11S4 wireless broadband router. The external interface of this device filtered all TCP ports by default, but UDP probes would still elicit port unreachable messages and thus give away the device.
 <!--
-           Packet content can also be affected with the --data, --data-string, and --data-length options.
-
-           The port list takes the same format as with the previously discussed -PS and -PA options. If no ports are specified, the default is 40125.
-           This default can be configured at compile-time by changing DEFAULT_UDP_PROBE_PORT_SPEC in nmap.h.  A highly uncommon port is used by default
-           because sending to open ports is often undesirable for this particular scan type.
-
-           Upon hitting a closed port on the target machine, the UDP probe should elicit an ICMP port unreachable packet in return. This signifies to
-           Nmap that the machine is up and available. Many other types of ICMP errors, such as host/network unreachables or TTL exceeded are indicative
-           of a down or unreachable host. A lack of response is also interpreted this way. If an open port is reached, most services simply ignore the
-           empty packet and fail to return any response. This is why the default probe port is 40125, which is highly unlikely to be in use. A few
-           services, such as the Character Generator (chargen) protocol, will respond to an empty UDP packet, and thus disclose to Nmap that the machine
-           is available.
-
-           The primary advantage of this scan type is that it bypasses firewalls and filters that only screen TCP. For example, I once owned a Linksys
-           BEFW11S4 wireless broadband router. The external interface of this device filtered all TCP ports by default, but UDP probes would still
-           elicit port unreachable messages and thus give away the device.
 
        -PY port list (SCTP INIT Ping)
            This option sends an SCTP packet containing a minimal INIT chunk. The default destination port is 80 (configurable at compile time by
