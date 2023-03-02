@@ -16,3 +16,8 @@ cover: https://iili.io/HGl4Et1.png
 * [使用 Burp Proxy 修改 HTTP 请求](/burp_suite/getting_started/modifying-http-requets/)
 * [设置目标范围](/burp_suite/getting_started/setting-target-scope/)
 * [使用 Burp Proxy 重复发送请求](/burp_suite/getting_started/reissuing-http-requests/)
+
+## Burp Suite 工具
+
+* [Burp Intruder](/burp_suite/tools/intruder/)
+  * [入门](/burp_suite/tools/intruder/getting-started/)
