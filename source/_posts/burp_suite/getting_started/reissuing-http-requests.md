@@ -6,11 +6,11 @@ categories: Burp Suite
 tags:
     - Burp Suite
 description:
-top_img: https://iili.io/HGl4Et1.png
+top_img: https://iili.io/HVEfKa1.jpg
 cover: https://iili.io/HGl4Et1.png
 ---
 
-原文地址: [Reissue requests with Burp Repeater](https://portswigger.net/burp/documentation/desktop/getting-started/reissuing-http-requests)
+> 原文地址: [Reissue requests with Burp Repeater](https://portswigger.net/burp/documentation/desktop/getting-started/reissuing-http-requests)
 
 ## 将请求发送到 Burp Repeater
 

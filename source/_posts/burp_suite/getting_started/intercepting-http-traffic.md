@@ -6,11 +6,11 @@ categories: Burp Suite
 tags:
     - Burp Suite
 description:
-top_img: https://iili.io/HGl4Et1.png
+top_img: https://iili.io/HVEfKa1.jpg
 cover: https://iili.io/HGl4Et1.png
 ---
 
-原文地址: [Intercept HTTP traffic with Burp Proxy](https://portswigger.net/burp/documentation/desktop/getting-started/intercepting-http-traffic)
+> 原文地址: [Intercept HTTP traffic with Burp Proxy](https://portswigger.net/burp/documentation/desktop/getting-started/intercepting-http-traffic)
 
 ## 第一步: 启动 Burp 浏览器
 
@@ -30,7 +30,7 @@ cover: https://iili.io/HGl4Et1.png
 
 ## 第四步: 关闭拦截
 
-当不想再拦截请求的时候，点击 **Itercept is on** 以关闭拦截
+当不想再拦截请求的时候，点击 **Itercept is on** 以关闭拦截。
 
 ![关闭拦截](https://iili.io/HVRFiTF.png)
 
